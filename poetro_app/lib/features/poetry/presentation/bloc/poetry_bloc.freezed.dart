@@ -24,6 +24,7 @@ mixin _$PoetryEvent {
     required TResult Function(String author) fetchPoetryByAuthor,
     required TResult Function(int count) fetchPoetryListWithCount,
     required TResult Function() fetchPoetryList,
+    required TResult Function(int count) fetchRandomSequencePoems,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +35,7 @@ mixin _$PoetryEvent {
     TResult? Function(String author)? fetchPoetryByAuthor,
     TResult? Function(int count)? fetchPoetryListWithCount,
     TResult? Function()? fetchPoetryList,
+    TResult? Function(int count)? fetchRandomSequencePoems,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +46,7 @@ mixin _$PoetryEvent {
     TResult Function(String author)? fetchPoetryByAuthor,
     TResult Function(int count)? fetchPoetryListWithCount,
     TResult Function()? fetchPoetryList,
+    TResult Function(int count)? fetchRandomSequencePoems,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -56,6 +59,8 @@ mixin _$PoetryEvent {
     required TResult Function(_FetchPoetryListWithCount value)
         fetchPoetryListWithCount,
     required TResult Function(_FetchPoetryList value) fetchPoetryList,
+    required TResult Function(_FetchRandomSequencePoems value)
+        fetchRandomSequencePoems,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,6 +72,8 @@ mixin _$PoetryEvent {
     TResult? Function(_FetchPoetryListWithCount value)?
         fetchPoetryListWithCount,
     TResult? Function(_FetchPoetryList value)? fetchPoetryList,
+    TResult? Function(_FetchRandomSequencePoems value)?
+        fetchRandomSequencePoems,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,6 +84,7 @@ mixin _$PoetryEvent {
     TResult Function(_FetchPoetryByAuthor value)? fetchPoetryByAuthor,
     TResult Function(_FetchPoetryListWithCount value)? fetchPoetryListWithCount,
     TResult Function(_FetchPoetryList value)? fetchPoetryList,
+    TResult Function(_FetchRandomSequencePoems value)? fetchRandomSequencePoems,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -144,6 +152,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(String author) fetchPoetryByAuthor,
     required TResult Function(int count) fetchPoetryListWithCount,
     required TResult Function() fetchPoetryList,
+    required TResult Function(int count) fetchRandomSequencePoems,
   }) {
     return started();
   }
@@ -157,6 +166,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(String author)? fetchPoetryByAuthor,
     TResult? Function(int count)? fetchPoetryListWithCount,
     TResult? Function()? fetchPoetryList,
+    TResult? Function(int count)? fetchRandomSequencePoems,
   }) {
     return started?.call();
   }
@@ -170,6 +180,7 @@ class _$StartedImpl implements _Started {
     TResult Function(String author)? fetchPoetryByAuthor,
     TResult Function(int count)? fetchPoetryListWithCount,
     TResult Function()? fetchPoetryList,
+    TResult Function(int count)? fetchRandomSequencePoems,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -188,6 +199,8 @@ class _$StartedImpl implements _Started {
     required TResult Function(_FetchPoetryListWithCount value)
         fetchPoetryListWithCount,
     required TResult Function(_FetchPoetryList value) fetchPoetryList,
+    required TResult Function(_FetchRandomSequencePoems value)
+        fetchRandomSequencePoems,
   }) {
     return started(this);
   }
@@ -202,6 +215,8 @@ class _$StartedImpl implements _Started {
     TResult? Function(_FetchPoetryListWithCount value)?
         fetchPoetryListWithCount,
     TResult? Function(_FetchPoetryList value)? fetchPoetryList,
+    TResult? Function(_FetchRandomSequencePoems value)?
+        fetchRandomSequencePoems,
   }) {
     return started?.call(this);
   }
@@ -215,6 +230,7 @@ class _$StartedImpl implements _Started {
     TResult Function(_FetchPoetryByAuthor value)? fetchPoetryByAuthor,
     TResult Function(_FetchPoetryListWithCount value)? fetchPoetryListWithCount,
     TResult Function(_FetchPoetryList value)? fetchPoetryList,
+    TResult Function(_FetchRandomSequencePoems value)? fetchRandomSequencePoems,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -298,6 +314,7 @@ class _$FetchPoetryImpl implements _FetchPoetry {
     required TResult Function(String author) fetchPoetryByAuthor,
     required TResult Function(int count) fetchPoetryListWithCount,
     required TResult Function() fetchPoetryList,
+    required TResult Function(int count) fetchRandomSequencePoems,
   }) {
     return fetchPoetryByKeyword(keyword);
   }
@@ -311,6 +328,7 @@ class _$FetchPoetryImpl implements _FetchPoetry {
     TResult? Function(String author)? fetchPoetryByAuthor,
     TResult? Function(int count)? fetchPoetryListWithCount,
     TResult? Function()? fetchPoetryList,
+    TResult? Function(int count)? fetchRandomSequencePoems,
   }) {
     return fetchPoetryByKeyword?.call(keyword);
   }
@@ -324,6 +342,7 @@ class _$FetchPoetryImpl implements _FetchPoetry {
     TResult Function(String author)? fetchPoetryByAuthor,
     TResult Function(int count)? fetchPoetryListWithCount,
     TResult Function()? fetchPoetryList,
+    TResult Function(int count)? fetchRandomSequencePoems,
     required TResult orElse(),
   }) {
     if (fetchPoetryByKeyword != null) {
@@ -342,6 +361,8 @@ class _$FetchPoetryImpl implements _FetchPoetry {
     required TResult Function(_FetchPoetryListWithCount value)
         fetchPoetryListWithCount,
     required TResult Function(_FetchPoetryList value) fetchPoetryList,
+    required TResult Function(_FetchRandomSequencePoems value)
+        fetchRandomSequencePoems,
   }) {
     return fetchPoetryByKeyword(this);
   }
@@ -356,6 +377,8 @@ class _$FetchPoetryImpl implements _FetchPoetry {
     TResult? Function(_FetchPoetryListWithCount value)?
         fetchPoetryListWithCount,
     TResult? Function(_FetchPoetryList value)? fetchPoetryList,
+    TResult? Function(_FetchRandomSequencePoems value)?
+        fetchRandomSequencePoems,
   }) {
     return fetchPoetryByKeyword?.call(this);
   }
@@ -369,6 +392,7 @@ class _$FetchPoetryImpl implements _FetchPoetry {
     TResult Function(_FetchPoetryByAuthor value)? fetchPoetryByAuthor,
     TResult Function(_FetchPoetryListWithCount value)? fetchPoetryListWithCount,
     TResult Function(_FetchPoetryList value)? fetchPoetryList,
+    TResult Function(_FetchRandomSequencePoems value)? fetchRandomSequencePoems,
     required TResult orElse(),
   }) {
     if (fetchPoetryByKeyword != null) {
@@ -458,6 +482,7 @@ class _$FetchPoetryByTitleImpl implements _FetchPoetryByTitle {
     required TResult Function(String author) fetchPoetryByAuthor,
     required TResult Function(int count) fetchPoetryListWithCount,
     required TResult Function() fetchPoetryList,
+    required TResult Function(int count) fetchRandomSequencePoems,
   }) {
     return fetchPoetryByTitle(title);
   }
@@ -471,6 +496,7 @@ class _$FetchPoetryByTitleImpl implements _FetchPoetryByTitle {
     TResult? Function(String author)? fetchPoetryByAuthor,
     TResult? Function(int count)? fetchPoetryListWithCount,
     TResult? Function()? fetchPoetryList,
+    TResult? Function(int count)? fetchRandomSequencePoems,
   }) {
     return fetchPoetryByTitle?.call(title);
   }
@@ -484,6 +510,7 @@ class _$FetchPoetryByTitleImpl implements _FetchPoetryByTitle {
     TResult Function(String author)? fetchPoetryByAuthor,
     TResult Function(int count)? fetchPoetryListWithCount,
     TResult Function()? fetchPoetryList,
+    TResult Function(int count)? fetchRandomSequencePoems,
     required TResult orElse(),
   }) {
     if (fetchPoetryByTitle != null) {
@@ -502,6 +529,8 @@ class _$FetchPoetryByTitleImpl implements _FetchPoetryByTitle {
     required TResult Function(_FetchPoetryListWithCount value)
         fetchPoetryListWithCount,
     required TResult Function(_FetchPoetryList value) fetchPoetryList,
+    required TResult Function(_FetchRandomSequencePoems value)
+        fetchRandomSequencePoems,
   }) {
     return fetchPoetryByTitle(this);
   }
@@ -516,6 +545,8 @@ class _$FetchPoetryByTitleImpl implements _FetchPoetryByTitle {
     TResult? Function(_FetchPoetryListWithCount value)?
         fetchPoetryListWithCount,
     TResult? Function(_FetchPoetryList value)? fetchPoetryList,
+    TResult? Function(_FetchRandomSequencePoems value)?
+        fetchRandomSequencePoems,
   }) {
     return fetchPoetryByTitle?.call(this);
   }
@@ -529,6 +560,7 @@ class _$FetchPoetryByTitleImpl implements _FetchPoetryByTitle {
     TResult Function(_FetchPoetryByAuthor value)? fetchPoetryByAuthor,
     TResult Function(_FetchPoetryListWithCount value)? fetchPoetryListWithCount,
     TResult Function(_FetchPoetryList value)? fetchPoetryList,
+    TResult Function(_FetchRandomSequencePoems value)? fetchRandomSequencePoems,
     required TResult orElse(),
   }) {
     if (fetchPoetryByTitle != null) {
@@ -619,6 +651,7 @@ class _$FetchPoetryByAuthorImpl implements _FetchPoetryByAuthor {
     required TResult Function(String author) fetchPoetryByAuthor,
     required TResult Function(int count) fetchPoetryListWithCount,
     required TResult Function() fetchPoetryList,
+    required TResult Function(int count) fetchRandomSequencePoems,
   }) {
     return fetchPoetryByAuthor(author);
   }
@@ -632,6 +665,7 @@ class _$FetchPoetryByAuthorImpl implements _FetchPoetryByAuthor {
     TResult? Function(String author)? fetchPoetryByAuthor,
     TResult? Function(int count)? fetchPoetryListWithCount,
     TResult? Function()? fetchPoetryList,
+    TResult? Function(int count)? fetchRandomSequencePoems,
   }) {
     return fetchPoetryByAuthor?.call(author);
   }
@@ -645,6 +679,7 @@ class _$FetchPoetryByAuthorImpl implements _FetchPoetryByAuthor {
     TResult Function(String author)? fetchPoetryByAuthor,
     TResult Function(int count)? fetchPoetryListWithCount,
     TResult Function()? fetchPoetryList,
+    TResult Function(int count)? fetchRandomSequencePoems,
     required TResult orElse(),
   }) {
     if (fetchPoetryByAuthor != null) {
@@ -663,6 +698,8 @@ class _$FetchPoetryByAuthorImpl implements _FetchPoetryByAuthor {
     required TResult Function(_FetchPoetryListWithCount value)
         fetchPoetryListWithCount,
     required TResult Function(_FetchPoetryList value) fetchPoetryList,
+    required TResult Function(_FetchRandomSequencePoems value)
+        fetchRandomSequencePoems,
   }) {
     return fetchPoetryByAuthor(this);
   }
@@ -677,6 +714,8 @@ class _$FetchPoetryByAuthorImpl implements _FetchPoetryByAuthor {
     TResult? Function(_FetchPoetryListWithCount value)?
         fetchPoetryListWithCount,
     TResult? Function(_FetchPoetryList value)? fetchPoetryList,
+    TResult? Function(_FetchRandomSequencePoems value)?
+        fetchRandomSequencePoems,
   }) {
     return fetchPoetryByAuthor?.call(this);
   }
@@ -690,6 +729,7 @@ class _$FetchPoetryByAuthorImpl implements _FetchPoetryByAuthor {
     TResult Function(_FetchPoetryByAuthor value)? fetchPoetryByAuthor,
     TResult Function(_FetchPoetryListWithCount value)? fetchPoetryListWithCount,
     TResult Function(_FetchPoetryList value)? fetchPoetryList,
+    TResult Function(_FetchRandomSequencePoems value)? fetchRandomSequencePoems,
     required TResult orElse(),
   }) {
     if (fetchPoetryByAuthor != null) {
@@ -782,6 +822,7 @@ class _$FetchPoetryListWithCountImpl implements _FetchPoetryListWithCount {
     required TResult Function(String author) fetchPoetryByAuthor,
     required TResult Function(int count) fetchPoetryListWithCount,
     required TResult Function() fetchPoetryList,
+    required TResult Function(int count) fetchRandomSequencePoems,
   }) {
     return fetchPoetryListWithCount(count);
   }
@@ -795,6 +836,7 @@ class _$FetchPoetryListWithCountImpl implements _FetchPoetryListWithCount {
     TResult? Function(String author)? fetchPoetryByAuthor,
     TResult? Function(int count)? fetchPoetryListWithCount,
     TResult? Function()? fetchPoetryList,
+    TResult? Function(int count)? fetchRandomSequencePoems,
   }) {
     return fetchPoetryListWithCount?.call(count);
   }
@@ -808,6 +850,7 @@ class _$FetchPoetryListWithCountImpl implements _FetchPoetryListWithCount {
     TResult Function(String author)? fetchPoetryByAuthor,
     TResult Function(int count)? fetchPoetryListWithCount,
     TResult Function()? fetchPoetryList,
+    TResult Function(int count)? fetchRandomSequencePoems,
     required TResult orElse(),
   }) {
     if (fetchPoetryListWithCount != null) {
@@ -826,6 +869,8 @@ class _$FetchPoetryListWithCountImpl implements _FetchPoetryListWithCount {
     required TResult Function(_FetchPoetryListWithCount value)
         fetchPoetryListWithCount,
     required TResult Function(_FetchPoetryList value) fetchPoetryList,
+    required TResult Function(_FetchRandomSequencePoems value)
+        fetchRandomSequencePoems,
   }) {
     return fetchPoetryListWithCount(this);
   }
@@ -840,6 +885,8 @@ class _$FetchPoetryListWithCountImpl implements _FetchPoetryListWithCount {
     TResult? Function(_FetchPoetryListWithCount value)?
         fetchPoetryListWithCount,
     TResult? Function(_FetchPoetryList value)? fetchPoetryList,
+    TResult? Function(_FetchRandomSequencePoems value)?
+        fetchRandomSequencePoems,
   }) {
     return fetchPoetryListWithCount?.call(this);
   }
@@ -853,6 +900,7 @@ class _$FetchPoetryListWithCountImpl implements _FetchPoetryListWithCount {
     TResult Function(_FetchPoetryByAuthor value)? fetchPoetryByAuthor,
     TResult Function(_FetchPoetryListWithCount value)? fetchPoetryListWithCount,
     TResult Function(_FetchPoetryList value)? fetchPoetryList,
+    TResult Function(_FetchRandomSequencePoems value)? fetchRandomSequencePoems,
     required TResult orElse(),
   }) {
     if (fetchPoetryListWithCount != null) {
@@ -916,6 +964,7 @@ class _$FetchPoetryListImpl implements _FetchPoetryList {
     required TResult Function(String author) fetchPoetryByAuthor,
     required TResult Function(int count) fetchPoetryListWithCount,
     required TResult Function() fetchPoetryList,
+    required TResult Function(int count) fetchRandomSequencePoems,
   }) {
     return fetchPoetryList();
   }
@@ -929,6 +978,7 @@ class _$FetchPoetryListImpl implements _FetchPoetryList {
     TResult? Function(String author)? fetchPoetryByAuthor,
     TResult? Function(int count)? fetchPoetryListWithCount,
     TResult? Function()? fetchPoetryList,
+    TResult? Function(int count)? fetchRandomSequencePoems,
   }) {
     return fetchPoetryList?.call();
   }
@@ -942,6 +992,7 @@ class _$FetchPoetryListImpl implements _FetchPoetryList {
     TResult Function(String author)? fetchPoetryByAuthor,
     TResult Function(int count)? fetchPoetryListWithCount,
     TResult Function()? fetchPoetryList,
+    TResult Function(int count)? fetchRandomSequencePoems,
     required TResult orElse(),
   }) {
     if (fetchPoetryList != null) {
@@ -960,6 +1011,8 @@ class _$FetchPoetryListImpl implements _FetchPoetryList {
     required TResult Function(_FetchPoetryListWithCount value)
         fetchPoetryListWithCount,
     required TResult Function(_FetchPoetryList value) fetchPoetryList,
+    required TResult Function(_FetchRandomSequencePoems value)
+        fetchRandomSequencePoems,
   }) {
     return fetchPoetryList(this);
   }
@@ -974,6 +1027,8 @@ class _$FetchPoetryListImpl implements _FetchPoetryList {
     TResult? Function(_FetchPoetryListWithCount value)?
         fetchPoetryListWithCount,
     TResult? Function(_FetchPoetryList value)? fetchPoetryList,
+    TResult? Function(_FetchRandomSequencePoems value)?
+        fetchRandomSequencePoems,
   }) {
     return fetchPoetryList?.call(this);
   }
@@ -987,6 +1042,7 @@ class _$FetchPoetryListImpl implements _FetchPoetryList {
     TResult Function(_FetchPoetryByAuthor value)? fetchPoetryByAuthor,
     TResult Function(_FetchPoetryListWithCount value)? fetchPoetryListWithCount,
     TResult Function(_FetchPoetryList value)? fetchPoetryList,
+    TResult Function(_FetchRandomSequencePoems value)? fetchRandomSequencePoems,
     required TResult orElse(),
   }) {
     if (fetchPoetryList != null) {
@@ -1001,29 +1057,200 @@ abstract class _FetchPoetryList implements PoetryEvent {
 }
 
 /// @nodoc
+abstract class _$$FetchRandomSequencePoemsImplCopyWith<$Res> {
+  factory _$$FetchRandomSequencePoemsImplCopyWith(
+          _$FetchRandomSequencePoemsImpl value,
+          $Res Function(_$FetchRandomSequencePoemsImpl) then) =
+      __$$FetchRandomSequencePoemsImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int count});
+}
+
+/// @nodoc
+class __$$FetchRandomSequencePoemsImplCopyWithImpl<$Res>
+    extends _$PoetryEventCopyWithImpl<$Res, _$FetchRandomSequencePoemsImpl>
+    implements _$$FetchRandomSequencePoemsImplCopyWith<$Res> {
+  __$$FetchRandomSequencePoemsImplCopyWithImpl(
+      _$FetchRandomSequencePoemsImpl _value,
+      $Res Function(_$FetchRandomSequencePoemsImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? count = null,
+  }) {
+    return _then(_$FetchRandomSequencePoemsImpl(
+      null == count
+          ? _value.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FetchRandomSequencePoemsImpl implements _FetchRandomSequencePoems {
+  const _$FetchRandomSequencePoemsImpl(this.count);
+
+  @override
+  final int count;
+
+  @override
+  String toString() {
+    return 'PoetryEvent.fetchRandomSequencePoems(count: $count)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FetchRandomSequencePoemsImpl &&
+            (identical(other.count, count) || other.count == count));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, count);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FetchRandomSequencePoemsImplCopyWith<_$FetchRandomSequencePoemsImpl>
+      get copyWith => __$$FetchRandomSequencePoemsImplCopyWithImpl<
+          _$FetchRandomSequencePoemsImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String keyword) fetchPoetryByKeyword,
+    required TResult Function(String title) fetchPoetryByTitle,
+    required TResult Function(String author) fetchPoetryByAuthor,
+    required TResult Function(int count) fetchPoetryListWithCount,
+    required TResult Function() fetchPoetryList,
+    required TResult Function(int count) fetchRandomSequencePoems,
+  }) {
+    return fetchRandomSequencePoems(count);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String keyword)? fetchPoetryByKeyword,
+    TResult? Function(String title)? fetchPoetryByTitle,
+    TResult? Function(String author)? fetchPoetryByAuthor,
+    TResult? Function(int count)? fetchPoetryListWithCount,
+    TResult? Function()? fetchPoetryList,
+    TResult? Function(int count)? fetchRandomSequencePoems,
+  }) {
+    return fetchRandomSequencePoems?.call(count);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String keyword)? fetchPoetryByKeyword,
+    TResult Function(String title)? fetchPoetryByTitle,
+    TResult Function(String author)? fetchPoetryByAuthor,
+    TResult Function(int count)? fetchPoetryListWithCount,
+    TResult Function()? fetchPoetryList,
+    TResult Function(int count)? fetchRandomSequencePoems,
+    required TResult orElse(),
+  }) {
+    if (fetchRandomSequencePoems != null) {
+      return fetchRandomSequencePoems(count);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_FetchPoetry value) fetchPoetryByKeyword,
+    required TResult Function(_FetchPoetryByTitle value) fetchPoetryByTitle,
+    required TResult Function(_FetchPoetryByAuthor value) fetchPoetryByAuthor,
+    required TResult Function(_FetchPoetryListWithCount value)
+        fetchPoetryListWithCount,
+    required TResult Function(_FetchPoetryList value) fetchPoetryList,
+    required TResult Function(_FetchRandomSequencePoems value)
+        fetchRandomSequencePoems,
+  }) {
+    return fetchRandomSequencePoems(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_FetchPoetry value)? fetchPoetryByKeyword,
+    TResult? Function(_FetchPoetryByTitle value)? fetchPoetryByTitle,
+    TResult? Function(_FetchPoetryByAuthor value)? fetchPoetryByAuthor,
+    TResult? Function(_FetchPoetryListWithCount value)?
+        fetchPoetryListWithCount,
+    TResult? Function(_FetchPoetryList value)? fetchPoetryList,
+    TResult? Function(_FetchRandomSequencePoems value)?
+        fetchRandomSequencePoems,
+  }) {
+    return fetchRandomSequencePoems?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_FetchPoetry value)? fetchPoetryByKeyword,
+    TResult Function(_FetchPoetryByTitle value)? fetchPoetryByTitle,
+    TResult Function(_FetchPoetryByAuthor value)? fetchPoetryByAuthor,
+    TResult Function(_FetchPoetryListWithCount value)? fetchPoetryListWithCount,
+    TResult Function(_FetchPoetryList value)? fetchPoetryList,
+    TResult Function(_FetchRandomSequencePoems value)? fetchRandomSequencePoems,
+    required TResult orElse(),
+  }) {
+    if (fetchRandomSequencePoems != null) {
+      return fetchRandomSequencePoems(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchRandomSequencePoems implements PoetryEvent {
+  const factory _FetchRandomSequencePoems(final int count) =
+      _$FetchRandomSequencePoemsImpl;
+
+  int get count;
+  @JsonKey(ignore: true)
+  _$$FetchRandomSequencePoemsImplCopyWith<_$FetchRandomSequencePoemsImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$PoetryState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() fetched,
-    required TResult Function() failure,
+    required TResult Function(List<PoetryDTO> poetryList) fetched,
+    required TResult Function(String message) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? fetched,
-    TResult? Function()? failure,
+    TResult? Function(List<PoetryDTO> poetryList)? fetched,
+    TResult? Function(String message)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? fetched,
-    TResult Function()? failure,
+    TResult Function(List<PoetryDTO> poetryList)? fetched,
+    TResult Function(String message)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1112,8 +1339,8 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() fetched,
-    required TResult Function() failure,
+    required TResult Function(List<PoetryDTO> poetryList) fetched,
+    required TResult Function(String message) failure,
   }) {
     return initial();
   }
@@ -1123,8 +1350,8 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? fetched,
-    TResult? Function()? failure,
+    TResult? Function(List<PoetryDTO> poetryList)? fetched,
+    TResult? Function(String message)? failure,
   }) {
     return initial?.call();
   }
@@ -1134,8 +1361,8 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? fetched,
-    TResult Function()? failure,
+    TResult Function(List<PoetryDTO> poetryList)? fetched,
+    TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1226,8 +1453,8 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() fetched,
-    required TResult Function() failure,
+    required TResult Function(List<PoetryDTO> poetryList) fetched,
+    required TResult Function(String message) failure,
   }) {
     return loading();
   }
@@ -1237,8 +1464,8 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? fetched,
-    TResult? Function()? failure,
+    TResult? Function(List<PoetryDTO> poetryList)? fetched,
+    TResult? Function(String message)? failure,
   }) {
     return loading?.call();
   }
@@ -1248,8 +1475,8 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? fetched,
-    TResult Function()? failure,
+    TResult Function(List<PoetryDTO> poetryList)? fetched,
+    TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -1305,6 +1532,8 @@ abstract class _$$FetchedImplCopyWith<$Res> {
   factory _$$FetchedImplCopyWith(
           _$FetchedImpl value, $Res Function(_$FetchedImpl) then) =
       __$$FetchedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<PoetryDTO> poetryList});
 }
 
 /// @nodoc
@@ -1314,36 +1543,68 @@ class __$$FetchedImplCopyWithImpl<$Res>
   __$$FetchedImplCopyWithImpl(
       _$FetchedImpl _value, $Res Function(_$FetchedImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? poetryList = null,
+  }) {
+    return _then(_$FetchedImpl(
+      null == poetryList
+          ? _value._poetryList
+          : poetryList // ignore: cast_nullable_to_non_nullable
+              as List<PoetryDTO>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$FetchedImpl implements _Fetched {
-  const _$FetchedImpl();
+  const _$FetchedImpl(final List<PoetryDTO> poetryList)
+      : _poetryList = poetryList;
+
+  final List<PoetryDTO> _poetryList;
+  @override
+  List<PoetryDTO> get poetryList {
+    if (_poetryList is EqualUnmodifiableListView) return _poetryList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_poetryList);
+  }
 
   @override
   String toString() {
-    return 'PoetryState.fetched()';
+    return 'PoetryState.fetched(poetryList: $poetryList)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$FetchedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$FetchedImpl &&
+            const DeepCollectionEquality()
+                .equals(other._poetryList, _poetryList));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_poetryList));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FetchedImplCopyWith<_$FetchedImpl> get copyWith =>
+      __$$FetchedImplCopyWithImpl<_$FetchedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() fetched,
-    required TResult Function() failure,
+    required TResult Function(List<PoetryDTO> poetryList) fetched,
+    required TResult Function(String message) failure,
   }) {
-    return fetched();
+    return fetched(poetryList);
   }
 
   @override
@@ -1351,10 +1612,10 @@ class _$FetchedImpl implements _Fetched {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? fetched,
-    TResult? Function()? failure,
+    TResult? Function(List<PoetryDTO> poetryList)? fetched,
+    TResult? Function(String message)? failure,
   }) {
-    return fetched?.call();
+    return fetched?.call(poetryList);
   }
 
   @override
@@ -1362,12 +1623,12 @@ class _$FetchedImpl implements _Fetched {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? fetched,
-    TResult Function()? failure,
+    TResult Function(List<PoetryDTO> poetryList)? fetched,
+    TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
     if (fetched != null) {
-      return fetched();
+      return fetched(poetryList);
     }
     return orElse();
   }
@@ -1411,7 +1672,12 @@ class _$FetchedImpl implements _Fetched {
 }
 
 abstract class _Fetched implements PoetryState {
-  const factory _Fetched() = _$FetchedImpl;
+  const factory _Fetched(final List<PoetryDTO> poetryList) = _$FetchedImpl;
+
+  List<PoetryDTO> get poetryList;
+  @JsonKey(ignore: true)
+  _$$FetchedImplCopyWith<_$FetchedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1419,6 +1685,8 @@ abstract class _$$FailureImplCopyWith<$Res> {
   factory _$$FailureImplCopyWith(
           _$FailureImpl value, $Res Function(_$FailureImpl) then) =
       __$$FailureImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -1428,36 +1696,60 @@ class __$$FailureImplCopyWithImpl<$Res>
   __$$FailureImplCopyWithImpl(
       _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$FailureImpl(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$FailureImpl implements _Failure {
-  const _$FailureImpl();
+  const _$FailureImpl(this.message);
+
+  @override
+  final String message;
 
   @override
   String toString() {
-    return 'PoetryState.failure()';
+    return 'PoetryState.failure(message: $message)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$FailureImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$FailureImpl &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
+      __$$FailureImplCopyWithImpl<_$FailureImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() fetched,
-    required TResult Function() failure,
+    required TResult Function(List<PoetryDTO> poetryList) fetched,
+    required TResult Function(String message) failure,
   }) {
-    return failure();
+    return failure(message);
   }
 
   @override
@@ -1465,10 +1757,10 @@ class _$FailureImpl implements _Failure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? fetched,
-    TResult? Function()? failure,
+    TResult? Function(List<PoetryDTO> poetryList)? fetched,
+    TResult? Function(String message)? failure,
   }) {
-    return failure?.call();
+    return failure?.call(message);
   }
 
   @override
@@ -1476,12 +1768,12 @@ class _$FailureImpl implements _Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? fetched,
-    TResult Function()? failure,
+    TResult Function(List<PoetryDTO> poetryList)? fetched,
+    TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
     if (failure != null) {
-      return failure();
+      return failure(message);
     }
     return orElse();
   }
@@ -1525,5 +1817,10 @@ class _$FailureImpl implements _Failure {
 }
 
 abstract class _Failure implements PoetryState {
-  const factory _Failure() = _$FailureImpl;
+  const factory _Failure(final String message) = _$FailureImpl;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -5,13 +5,14 @@ import 'package:poetro_app/features/poetry/domain/entities/poetry_entity.dart';
 import 'package:poetro_app/features/poetry/domain/repository/poetry_repository.dart';
 
 @singleton
-class GetPoetryByCountUsecase implements Usecase<List<PoetryEntity>, int> {
+class GetRandomPoemSequenceUsecase implements Usecase<List<PoetryEntity>, int> {
   final IPoetryRepository _poetryRepository;
 
-  GetPoetryByCountUsecase(this._poetryRepository);
+  GetRandomPoemSequenceUsecase({required IPoetryRepository poetryRepository})
+      : _poetryRepository = poetryRepository;
 
   @override
   Future<ApiResponse<List<PoetryEntity>>> call(int params) async {
-    return await _poetryRepository.getPoetriyListByCount(params);
+    return await _poetryRepository.getRandomSequencePoems(params);
   }
 }

@@ -13,4 +13,6 @@ abstract interface class IPoetryRepository {
   Future<ApiResponse<List<PoetryEntity>>> getPoetryListByKeyword(
     String keyword,
   );
+
+  Future<ApiResponse<List<PoetryEntity>>> getRandomSequencePoems(int count);
 }

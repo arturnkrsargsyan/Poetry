@@ -1,4 +1,5 @@
 import 'package:fpdart/fpdart.dart';
+import 'package:injectable/injectable.dart';
 import 'package:poetro_app/core/error/api_exception.dart';
 import 'package:poetro_app/core/network/api_response.dart';
 import 'package:poetro_app/features/poetry/data/data_sources/remote/i_poetry_remote_data_source.dart';
@@ -6,6 +7,7 @@ import 'package:poetro_app/features/poetry/data/models/poetry_model.dart';
 import 'package:poetro_app/features/poetry/domain/entities/poetry_entity.dart';
 import 'package:poetro_app/features/poetry/domain/repository/poetry_repository.dart';
 
+@Singleton(as: IPoetryRepository)
 class PoetryRepositoryImpl implements IPoetryRepository {
   final IPoetryRemoteDataSource _remoteDataSource;
 
@@ -97,6 +99,28 @@ class PoetryRepositoryImpl implements IPoetryRepository {
   ) async {
     try {
       final response = await _remoteDataSource.getPoetryListByKeyword(keyword);
+
+      return right(
+        response
+            .map(
+              (e) => e.toEntity(),
+            )
+            .toList(),
+      );
+    } catch (e) {
+      return left(
+        ApiException(
+          message: e.toString(),
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<ApiResponse<List<PoetryEntity>>> getRandomSequencePoems(
+      int count) async {
+    try {
+      final response = await _remoteDataSource.getRandomSequencePoems(count);
 
       return right(
         response

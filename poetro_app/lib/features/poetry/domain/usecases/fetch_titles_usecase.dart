@@ -1,7 +1,9 @@
+import 'package:injectable/injectable.dart';
 import 'package:poetro_app/core/network/api_response.dart';
 import 'package:poetro_app/core/usecases/no_param_usecases.dart';
 import 'package:poetro_app/features/poetry/domain/repository/poetry_repository.dart';
 
+@singleton
 class FetchTitlesUsecase implements NoParamsUsecase<List<String>> {
   final IPoetryRepository _repository;
 

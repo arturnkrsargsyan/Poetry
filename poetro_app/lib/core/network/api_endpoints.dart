@@ -1,5 +1,5 @@
 class ApiEndpoints {
-  static const String base = "https://poetrydb.org/index.html";
+  static const String base = "https://poetrydb.org";
   static const String allAuthors = "$base/author";
   static const String allPoems = "$base/title";
 
@@ -8,6 +8,6 @@ class ApiEndpoints {
 
   static String poemByKeyword(String title) => "$allPoems,title/$title";
 
-  static String randomPoem() => "$base/random";
+  static String randomSequence(int count) => "$allPoems,random/;$count";
   static String poemByPoemCount(int count) => "$allPoems,poemcount/;$count";
 }

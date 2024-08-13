@@ -1,8 +1,12 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:poetro_app/core/network/api_endpoints.dart';
 import 'package:poetro_app/features/poetry/data/data_sources/remote/i_poetry_remote_data_source.dart';
 import 'package:poetro_app/features/poetry/data/models/poetry_model.dart';
 
+@Singleton(as: IPoetryRemoteDataSource)
 class PoetryDataSource implements IPoetryRemoteDataSource {
   final Dio _dio;
 
@@ -12,7 +16,11 @@ class PoetryDataSource implements IPoetryRemoteDataSource {
   Future<List<PoetryModel>> getPoetriyListByCount(int count) async {
     final response = await _dio.get(ApiEndpoints.poemByPoemCount(count));
 
-    return response.data['titles']!;
+    final listOfJson = response.data as List;
+
+    log(listOfJson[0].toString());
+
+    return listOfJson.map((e) => PoetryModel.fromJson(e)).toList();
   }
 
   @override
@@ -39,6 +47,15 @@ class PoetryDataSource implements IPoetryRemoteDataSource {
   @override
   Future<List<PoetryModel>> getPoetryListByKeyword(String keyword) async {
     final response = await _dio.get(ApiEndpoints.poemByKeyword(keyword));
+
+    return (response.data as List).map((e) => PoetryModel.fromJson(e)).toList();
+  }
+
+  @override
+  Future<List<PoetryModel>> getRandomSequencePoems(int count) async {
+    final response = await _dio.get(
+      ApiEndpoints.randomSequence(count),
+    );
 
     return (response.data as List).map((e) => PoetryModel.fromJson(e)).toList();
   }

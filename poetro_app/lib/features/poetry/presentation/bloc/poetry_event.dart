@@ -11,4 +11,7 @@ class PoetryEvent with _$PoetryEvent {
   const factory PoetryEvent.fetchPoetryListWithCount(int count) =
       _FetchPoetryListWithCount;
   const factory PoetryEvent.fetchPoetryList() = _FetchPoetryList;
+
+  const factory PoetryEvent.fetchRandomSequencePoems(int count) =
+      _FetchRandomSequencePoems;
 }
