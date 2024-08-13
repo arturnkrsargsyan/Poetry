@@ -14,15 +14,11 @@ final appRouter = GoRouter(
       routes: [
         GoRoute(
           path: 'poetry',
-          // redirect: (context, state) {
-          //   if (state.extra == null) {
-          //     return '/';
-          //   }
-          //   return null;
-          // },
           pageBuilder: (context, state) {
             return CustomTransitionPage(
-              child: PoetryPage(poetry: state.extra as PoetryDTO),
+              child: PoetryPage(
+                  poetry:
+                      state.extra != null ? state.extra as PoetryDTO : null),
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) {
                 final offsetTween = Tween<Offset>(

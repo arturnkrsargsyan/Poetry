@@ -20,6 +20,8 @@ import '../../features/poetry/data/repository/poetry_repository_impl.dart'
     as _i88;
 import '../../features/poetry/domain/repository/poetry_repository.dart'
     as _i392;
+import '../../features/poetry/domain/usecases/fetch_random_poem_usecase.dart'
+    as _i654;
 import '../../features/poetry/domain/usecases/fetch_titles_usecase.dart'
     as _i42;
 import '../../features/poetry/domain/usecases/get_poetry_list_by_author_usecase.dart'
@@ -60,6 +62,8 @@ _i174.GetIt $initGetIt(
   gh.singleton<_i344.GetPoetryListByAuthorUsecase>(() =>
       _i344.GetPoetryListByAuthorUsecase(
           repository: gh<_i392.IPoetryRepository>()));
+  gh.singleton<_i654.FetchRandomPoemUsecase>(() =>
+      _i654.FetchRandomPoemUsecase(repository: gh<_i392.IPoetryRepository>()));
   gh.singleton<_i375.GetPoetryByCountUsecase>(
       () => _i375.GetPoetryByCountUsecase(gh<_i392.IPoetryRepository>()));
   gh.singleton<_i87.GetRandomPoemSequenceUsecase>(() =>
@@ -69,6 +73,7 @@ _i174.GetIt $initGetIt(
         getPoetryUsecase: gh<_i422.GetPoetryUsecase>(),
         getPoetryByCountUsecase: gh<_i375.GetPoetryByCountUsecase>(),
         getRandomPoemSequenceUsecase: gh<_i87.GetRandomPoemSequenceUsecase>(),
+        fetchRandomPoemUsecase: gh<_i654.FetchRandomPoemUsecase>(),
       ));
   return getIt;
 }

@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:poetro_app/features/poetry/domain/usecases/fetch_random_poem_usecase.dart';
 import 'package:poetro_app/features/poetry/domain/usecases/get_poetry_list_by_count_usecase.dart';
 import 'package:poetro_app/features/poetry/domain/usecases/get_poetry_usecase.dart';
 import 'package:poetro_app/features/poetry/domain/usecases/get_random_poem_sequence_usecase.dart';
@@ -12,9 +13,9 @@ part 'poetry_bloc.freezed.dart';
 
 @singleton
 class PoetryBloc extends Bloc<PoetryEvent, PoetryState> {
-  final GetPoetryUsecase _getPoetryUsecase;
-
   final GetPoetryByCountUsecase _getPoetryByCountUsecase;
+
+  final FetchRandomPoemUsecase _fetchRandomPoemUsecase;
 
   final GetRandomPoemSequenceUsecase _getRandomPoemSequenceUsecase;
 
@@ -22,12 +23,42 @@ class PoetryBloc extends Bloc<PoetryEvent, PoetryState> {
     required GetPoetryUsecase getPoetryUsecase,
     required GetPoetryByCountUsecase getPoetryByCountUsecase,
     required GetRandomPoemSequenceUsecase getRandomPoemSequenceUsecase,
-  })  : _getPoetryUsecase = getPoetryUsecase,
-        _getPoetryByCountUsecase = getPoetryByCountUsecase,
+    required FetchRandomPoemUsecase fetchRandomPoemUsecase,
+  })  : _getPoetryByCountUsecase = getPoetryByCountUsecase,
         _getRandomPoemSequenceUsecase = getRandomPoemSequenceUsecase,
+        _fetchRandomPoemUsecase = fetchRandomPoemUsecase,
         super(const _Initial()) {
     on<_FetchPoetryListWithCount>(_fetchPoetryListWithCount);
     on<_FetchRandomSequencePoems>(_fetchRandomSequencePoemList);
+    on<_FetchRandomPoem>(_fetchRandomPoem);
+  }
+
+  Future<void> _fetchRandomPoem(
+    _FetchRandomPoem event,
+    Emitter<PoetryState> emit,
+  ) async {
+    emit(
+      const PoetryState.loading(),
+    );
+
+    final response = await _fetchRandomPoemUsecase();
+
+    response.fold(
+      (l) {
+        emit(
+          PoetryState.failure(l.message),
+        );
+      },
+      (r) {
+        emit(
+          PoetryState.fetched(
+            [
+              PoetryDTO.fromEntity(r),
+            ],
+          ),
+        );
+      },
+    );
   }
 
   Future<void> _fetchRandomSequencePoemList(

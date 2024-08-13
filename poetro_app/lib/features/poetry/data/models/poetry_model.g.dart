@@ -10,9 +10,7 @@ PoetryModel _$PoetryModelFromJson(Map<String, dynamic> json) => PoetryModel(
       title: json['title'] as String,
       author: json['author'] as String,
       lines: (json['lines'] as List<dynamic>).map((e) => e as String).toList(),
-      linecount: int.parse(
-        json['linecount'],
-      ),
+      linecount: int.parse(json['linecount']),
     );
 
 Map<String, dynamic> _$PoetryModelToJson(PoetryModel instance) =>

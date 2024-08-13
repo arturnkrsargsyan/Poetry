@@ -18,8 +18,6 @@ class PoetryDataSource implements IPoetryRemoteDataSource {
 
     final listOfJson = response.data as List;
 
-    log(listOfJson[0].toString());
-
     return listOfJson.map((e) => PoetryModel.fromJson(e)).toList();
   }
 
@@ -58,5 +56,12 @@ class PoetryDataSource implements IPoetryRemoteDataSource {
     );
 
     return (response.data as List).map((e) => PoetryModel.fromJson(e)).toList();
+  }
+
+  @override
+  Future<PoetryModel> getRandomPoem() async {
+    final response = await getRandomSequencePoems(1);
+
+    return response[0];
   }
 }

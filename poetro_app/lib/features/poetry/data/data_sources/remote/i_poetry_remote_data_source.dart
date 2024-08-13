@@ -12,4 +12,6 @@ abstract interface class IPoetryRemoteDataSource {
   Future<List<PoetryModel>> getPoetryListByKeyword(String keyword);
 
   Future<List<PoetryModel>> getRandomSequencePoems(int count);
+
+  Future<PoetryModel> getRandomPoem();
 }

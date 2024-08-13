@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:poetro_app/core/error/api_exception.dart';
@@ -128,6 +130,23 @@ class PoetryRepositoryImpl implements IPoetryRepository {
               (e) => e.toEntity(),
             )
             .toList(),
+      );
+    } catch (e) {
+      return left(
+        ApiException(
+          message: e.toString(),
+        ),
+      );
+    }
+  }
+
+  @override
+  Future<ApiResponse<PoetryEntity>> getRandomPoem() async {
+    try {
+      final response = await _remoteDataSource.getRandomPoem();
+
+      return right(
+        response.toEntity(),
       );
     } catch (e) {
       return left(
