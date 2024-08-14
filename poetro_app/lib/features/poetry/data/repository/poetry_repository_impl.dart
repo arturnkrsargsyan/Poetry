@@ -1,11 +1,9 @@
-import 'dart:developer';
-
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 import 'package:poetro_app/core/error/api_exception.dart';
 import 'package:poetro_app/core/network/api_response.dart';
 import 'package:poetro_app/features/poetry/data/data_sources/remote/i_poetry_remote_data_source.dart';
-import 'package:poetro_app/features/poetry/data/models/poetry_model.dart';
+import 'package:poetro_app/features/poetry/data/dto/poetry_dto.dart';
 import 'package:poetro_app/features/poetry/domain/entities/poetry_entity.dart';
 import 'package:poetro_app/features/poetry/domain/repository/poetry_repository.dart';
 
@@ -20,7 +18,7 @@ class PoetryRepositoryImpl implements IPoetryRepository {
   Future<ApiResponse<List<PoetryEntity>>> getPoetriyListByCount(
       int count) async {
     try {
-      final List<PoetryModel> response =
+      final List<PoetryDTO> response =
           await _remoteDataSource.getPoetriyListByCount(count);
 
       return right(

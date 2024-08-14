@@ -1,17 +1,17 @@
-import 'package:poetro_app/features/poetry/data/models/poetry_model.dart';
+import 'package:poetro_app/features/poetry/data/dto/poetry_dto.dart';
 
 abstract interface class IPoetryRemoteDataSource {
   Future<List<String>> getPoetryList();
 
-  Future<PoetryModel> getPoetryDetail(String title);
+  Future<PoetryDTO> getPoetryDetail(String title);
 
-  Future<List<PoetryModel>> getPoetryListByAuthor(String author);
+  Future<List<PoetryDTO>> getPoetryListByAuthor(String author);
 
-  Future<List<PoetryModel>> getPoetriyListByCount(int count);
+  Future<List<PoetryDTO>> getPoetriyListByCount(int count);
 
-  Future<List<PoetryModel>> getPoetryListByKeyword(String keyword);
+  Future<List<PoetryDTO>> getPoetryListByKeyword(String keyword);
 
-  Future<List<PoetryModel>> getRandomSequencePoems(int count);
+  Future<List<PoetryDTO>> getRandomSequencePoems(int count);
 
-  Future<PoetryModel> getRandomPoem();
+  Future<PoetryDTO> getRandomPoem();
 }

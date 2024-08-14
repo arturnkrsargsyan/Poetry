@@ -1,10 +1,8 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:poetro_app/features/poetry/presentation/bloc/poetry_bloc.dart';
-import 'package:poetro_app/features/poetry/presentation/dto/poetry_dto.dart';
+import 'package:poetro_app/features/poetry/presentation/models/poetry_model.dart';
 import 'package:poetro_app/features/poetry/presentation/widgets/poetry_previw_item.dart';
 
 class InfinityScrollableBody extends StatefulWidget {
@@ -15,22 +13,20 @@ class InfinityScrollableBody extends StatefulWidget {
 }
 
 class _InfinityScrollableBodyState extends State<InfinityScrollableBody> {
-  late final PagingController<int, PoetryDTO> _pagingController;
+  late final PagingController<int, PoetryModel> _pagingController;
 
   @override
   void initState() {
-    _pagingController = PagingController(firstPageKey: 1);
+    _pagingController = PagingController(firstPageKey: 2);
     _pagingController.addPageRequestListener((d) {
       fetchData(d);
     });
-    // fetchData(3);
-
     super.initState();
   }
 
   Future<void> fetchData(int pageKey) async {
     context.read<PoetryBloc>().add(
-          PoetryEvent.fetchRandomSequencePoems(pageKey * 4), // MAX 3162
+          PoetryEvent.fetchRandomSequencePoems(pageKey * 5), // MAX 3162
         );
   }
 
@@ -55,7 +51,7 @@ class _InfinityScrollableBodyState extends State<InfinityScrollableBody> {
       },
       child: PagedListView(
         pagingController: _pagingController,
-        builderDelegate: PagedChildBuilderDelegate<PoetryDTO>(
+        builderDelegate: PagedChildBuilderDelegate<PoetryModel>(
           itemBuilder: (context, item, index) {
             return PoetryPreviwItem(poetryDTO: item);
           },

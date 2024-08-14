@@ -1423,7 +1423,7 @@ mixin _$PoetryState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PoetryDTO> poetryList) fetched,
+    required TResult Function(List<PoetryModel> poetryList) fetched,
     required TResult Function(String message) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -1431,7 +1431,7 @@ mixin _$PoetryState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PoetryDTO> poetryList)? fetched,
+    TResult? Function(List<PoetryModel> poetryList)? fetched,
     TResult? Function(String message)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -1439,7 +1439,7 @@ mixin _$PoetryState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PoetryDTO> poetryList)? fetched,
+    TResult Function(List<PoetryModel> poetryList)? fetched,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) =>
@@ -1529,7 +1529,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PoetryDTO> poetryList) fetched,
+    required TResult Function(List<PoetryModel> poetryList) fetched,
     required TResult Function(String message) failure,
   }) {
     return initial();
@@ -1540,7 +1540,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PoetryDTO> poetryList)? fetched,
+    TResult? Function(List<PoetryModel> poetryList)? fetched,
     TResult? Function(String message)? failure,
   }) {
     return initial?.call();
@@ -1551,7 +1551,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PoetryDTO> poetryList)? fetched,
+    TResult Function(List<PoetryModel> poetryList)? fetched,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -1643,7 +1643,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PoetryDTO> poetryList) fetched,
+    required TResult Function(List<PoetryModel> poetryList) fetched,
     required TResult Function(String message) failure,
   }) {
     return loading();
@@ -1654,7 +1654,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PoetryDTO> poetryList)? fetched,
+    TResult? Function(List<PoetryModel> poetryList)? fetched,
     TResult? Function(String message)? failure,
   }) {
     return loading?.call();
@@ -1665,7 +1665,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PoetryDTO> poetryList)? fetched,
+    TResult Function(List<PoetryModel> poetryList)? fetched,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -1723,7 +1723,7 @@ abstract class _$$FetchedImplCopyWith<$Res> {
           _$FetchedImpl value, $Res Function(_$FetchedImpl) then) =
       __$$FetchedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<PoetryDTO> poetryList});
+  $Res call({List<PoetryModel> poetryList});
 }
 
 /// @nodoc
@@ -1743,7 +1743,7 @@ class __$$FetchedImplCopyWithImpl<$Res>
       null == poetryList
           ? _value._poetryList
           : poetryList // ignore: cast_nullable_to_non_nullable
-              as List<PoetryDTO>,
+              as List<PoetryModel>,
     ));
   }
 }
@@ -1751,12 +1751,12 @@ class __$$FetchedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FetchedImpl implements _Fetched {
-  const _$FetchedImpl(final List<PoetryDTO> poetryList)
+  const _$FetchedImpl(final List<PoetryModel> poetryList)
       : _poetryList = poetryList;
 
-  final List<PoetryDTO> _poetryList;
+  final List<PoetryModel> _poetryList;
   @override
-  List<PoetryDTO> get poetryList {
+  List<PoetryModel> get poetryList {
     if (_poetryList is EqualUnmodifiableListView) return _poetryList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_poetryList);
@@ -1791,7 +1791,7 @@ class _$FetchedImpl implements _Fetched {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PoetryDTO> poetryList) fetched,
+    required TResult Function(List<PoetryModel> poetryList) fetched,
     required TResult Function(String message) failure,
   }) {
     return fetched(poetryList);
@@ -1802,7 +1802,7 @@ class _$FetchedImpl implements _Fetched {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PoetryDTO> poetryList)? fetched,
+    TResult? Function(List<PoetryModel> poetryList)? fetched,
     TResult? Function(String message)? failure,
   }) {
     return fetched?.call(poetryList);
@@ -1813,7 +1813,7 @@ class _$FetchedImpl implements _Fetched {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PoetryDTO> poetryList)? fetched,
+    TResult Function(List<PoetryModel> poetryList)? fetched,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {
@@ -1862,9 +1862,9 @@ class _$FetchedImpl implements _Fetched {
 }
 
 abstract class _Fetched implements PoetryState {
-  const factory _Fetched(final List<PoetryDTO> poetryList) = _$FetchedImpl;
+  const factory _Fetched(final List<PoetryModel> poetryList) = _$FetchedImpl;
 
-  List<PoetryDTO> get poetryList;
+  List<PoetryModel> get poetryList;
   @JsonKey(ignore: true)
   _$$FetchedImplCopyWith<_$FetchedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1936,7 +1936,7 @@ class _$FailureImpl implements _Failure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PoetryDTO> poetryList) fetched,
+    required TResult Function(List<PoetryModel> poetryList) fetched,
     required TResult Function(String message) failure,
   }) {
     return failure(message);
@@ -1947,7 +1947,7 @@ class _$FailureImpl implements _Failure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PoetryDTO> poetryList)? fetched,
+    TResult? Function(List<PoetryModel> poetryList)? fetched,
     TResult? Function(String message)? failure,
   }) {
     return failure?.call(message);
@@ -1958,7 +1958,7 @@ class _$FailureImpl implements _Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PoetryDTO> poetryList)? fetched,
+    TResult Function(List<PoetryModel> poetryList)? fetched,
     TResult Function(String message)? failure,
     required TResult orElse(),
   }) {

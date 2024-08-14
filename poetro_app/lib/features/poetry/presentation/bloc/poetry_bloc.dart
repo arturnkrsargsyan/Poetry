@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -5,7 +7,7 @@ import 'package:poetro_app/features/poetry/domain/usecases/fetch_random_poem_use
 import 'package:poetro_app/features/poetry/domain/usecases/get_poetry_list_by_count_usecase.dart';
 import 'package:poetro_app/features/poetry/domain/usecases/get_poetry_usecase.dart';
 import 'package:poetro_app/features/poetry/domain/usecases/get_random_poem_sequence_usecase.dart';
-import 'package:poetro_app/features/poetry/presentation/dto/poetry_dto.dart';
+import 'package:poetro_app/features/poetry/presentation/models/poetry_model.dart';
 
 part 'poetry_event.dart';
 part 'poetry_state.dart';
@@ -41,6 +43,8 @@ class PoetryBloc extends Bloc<PoetryEvent, PoetryState> {
       const PoetryState.loading(),
     );
 
+    log('Fetching random poem');
+
     final response = await _fetchRandomPoemUsecase();
 
     response.fold(
@@ -53,7 +57,7 @@ class PoetryBloc extends Bloc<PoetryEvent, PoetryState> {
         emit(
           PoetryState.fetched(
             [
-              PoetryDTO.fromEntity(r),
+              PoetryModel.fromEntity(r),
             ],
           ),
         );
@@ -80,7 +84,7 @@ class PoetryBloc extends Bloc<PoetryEvent, PoetryState> {
       (r) {
         emit(
           PoetryState.fetched(
-            r.map((e) => PoetryDTO.fromEntity(e)).toList(),
+            r.map((e) => PoetryModel.fromEntity(e)).toList(),
           ),
         );
       },
@@ -108,7 +112,7 @@ class PoetryBloc extends Bloc<PoetryEvent, PoetryState> {
           PoetryState.fetched(
             poetryList
                 .map(
-                  (e) => PoetryDTO.fromEntity(e),
+                  (e) => PoetryModel.fromEntity(e),
                 )
                 .toList(),
           ),

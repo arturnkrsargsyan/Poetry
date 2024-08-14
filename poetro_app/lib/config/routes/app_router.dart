@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:poetro_app/features/home/home_screen.dart';
-import 'package:poetro_app/features/poetry/presentation/dto/poetry_dto.dart';
+import 'package:poetro_app/features/poetry/presentation/models/poetry_model.dart';
 import 'package:poetro_app/features/poetry/presentation/pages/poetry_page.dart';
 
 final appRouter = GoRouter(
@@ -18,7 +18,7 @@ final appRouter = GoRouter(
             return CustomTransitionPage(
               child: PoetryPage(
                   poetry:
-                      state.extra != null ? state.extra as PoetryDTO : null),
+                      state.extra != null ? state.extra as PoetryModel : null),
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) {
                 final offsetTween = Tween<Offset>(

@@ -1,24 +1,24 @@
 import 'package:poetro_app/features/poetry/domain/entities/poetry_entity.dart';
 
-class PoetryDTO {
+class PoetryModel {
   final String title;
   final String author;
   final List<String> lines;
-  final int linesCounty;
+  final int linesCount;
 
-  const PoetryDTO({
+  const PoetryModel({
     required this.title,
     required this.author,
     required this.lines,
-    required this.linesCounty,
+    required this.linesCount,
   });
 
-  factory PoetryDTO.fromEntity(PoetryEntity entity) {
-    return PoetryDTO(
+  factory PoetryModel.fromEntity(PoetryEntity entity) {
+    return PoetryModel(
       title: entity.title,
       author: entity.author,
       lines: entity.lines,
-      linesCounty: entity.linecount,
+      linesCount: entity.linecount,
     );
   }
 }
