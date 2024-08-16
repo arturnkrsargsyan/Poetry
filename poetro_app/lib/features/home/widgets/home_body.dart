@@ -20,17 +20,17 @@ class _HomeBodyState extends State<HomeScreenBody> {
   @override
   void initState() {
     _pagingController = PagingController(firstPageKey: 2);
-    _pagingController.addPageRequestListener((d) {
-      fetchData(d);
-    });
+    _pagingController.addPageRequestListener(fetchData);
     super.initState();
   }
 
   Future<void> fetchData(int pageKey) async {
+    log('$pageKey', name: 'HomeBody');
     context.read<PoetryBloc>().add(
           PoetryEvent.fetchRandomSequencePoems(
             pageKey * 5,
-          ), // INFO MAX 3162, number bigger that this will always return 3162 items
+          ), // INFO MAX 3162,
+          // number bigger that this will always return 3162 items
         );
   }
 
@@ -49,7 +49,6 @@ class _HomeBodyState extends State<HomeScreenBody> {
             _pagingController.appendPage(fetchedState.poetryList, 1);
           },
           failure: (value) {
-            log(value.message, name: 'HomeBody');
             _pagingController.error = value.message;
           },
         );
@@ -58,7 +57,7 @@ class _HomeBodyState extends State<HomeScreenBody> {
         pagingController: _pagingController,
         builderDelegate: PagedChildBuilderDelegate<PoetryModel>(
           itemBuilder: (context, item, index) {
-            return PoetryPreviwItem(poetryDTO: item);
+            return PoetryPreviwItem(poetryModel: item);
           },
         ),
       ),

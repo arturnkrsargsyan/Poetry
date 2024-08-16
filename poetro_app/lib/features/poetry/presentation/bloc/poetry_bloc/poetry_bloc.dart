@@ -3,8 +3,10 @@ import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:poetro_app/core/error/api_exception.dart';
 import 'package:poetro_app/features/poetry/domain/usecases/fetch_random_poem_usecase.dart';
 import 'package:poetro_app/features/poetry/domain/usecases/get_poetry_list_by_count_usecase.dart';
+import 'package:poetro_app/features/poetry/domain/usecases/get_poetry_list_by_keyword_usecase.dart';
 import 'package:poetro_app/features/poetry/domain/usecases/get_random_poem_sequence_usecase.dart';
 import 'package:poetro_app/features/poetry/presentation/models/poetry_model.dart';
 
@@ -20,47 +22,59 @@ class PoetryBloc extends Bloc<PoetryEvent, PoetryState> {
 
   final GetRandomPoemSequenceUsecase _getRandomPoemSequenceUsecase;
 
+  final GetPoetryListByKeyword _getPoetryListByKeyword;
+
   PoetryBloc({
     required GetPoetryByCountUsecase getPoetryByCountUsecase,
     required FetchRandomPoemUsecase fetchRandomPoemUsecase,
     required GetRandomPoemSequenceUsecase getRandomPoemSequenceUsecase,
+    required GetPoetryListByKeyword getPoetryListByKeyword,
   })  : _getPoetryByCountUsecase = getPoetryByCountUsecase,
         _fetchRandomPoemUsecase = fetchRandomPoemUsecase,
         _getRandomPoemSequenceUsecase = getRandomPoemSequenceUsecase,
-        // _savePoetryUsecase = savePoetryUsecase,
-        // _getLocalPUsecase = GetSavedPoems,
+        _getPoetryListByKeyword = getPoetryListByKeyword,
         super(const _Initial()) {
     on<_FetchPoetryListWithCount>(_fetchPoetryListWithCount);
     on<_FetchRandomSequencePoems>(_fetchRandomSequencePoemList);
     on<_FetchRandomPoem>(_fetchRandomPoem);
-    // on<_SavePoetry>(_savePoetry);
+    on<_FetchPoetryByTitle>(_fetchPoetryByTitle);
   }
 
-  // Future<void> _savePoetry(
-  //   _SavePoetry event,
-  //   Emitter<PoetryState> emit,
-  // ) async {
-  //   emit(
-  //     const PoetryState.loading(),
-  //   );
+  Future<void> _fetchPoetryByTitle(
+    _FetchPoetryByTitle event,
+    Emitter<PoetryState> emit,
+  ) async {
+    emit(
+      const PoetryState.loading(),
+    );
+    final response = await _getPoetryListByKeyword(
+      GetPoetryListByKeywordArg(
+        keyword: event.title,
+        count: event.count,
+      ),
+    );
 
-  //   final response = await _savePoetryUsecase(event.poetry.toEntity());
-
-  //   response.fold(
-  //     (l) {
-  //       log('Error saving poetry: ${l.message}');
-  //       emit(
-  //         PoetryState.failure(l.message),
-  //       );
-  //     },
-  //     (r) {
-  //       log('Poetry saved');
-  //       emit(
-  //         const PoetryState.saved(),
-  //       );
-  //     },
-  //   );
-  // }
+    response.fold(
+      (ApiException apiException) {
+        emit(
+          PoetryState.failure(
+            apiException.message,
+          ),
+        );
+      },
+      (poetryList) {
+        emit(
+          PoetryState.fetched(
+            poetryList
+                .map(
+                  PoetryModel.fromEntity,
+                )
+                .toList(),
+          ),
+        );
+      },
+    );
+  }
 
   Future<void> _fetchRandomPoem(
     _FetchRandomPoem event,

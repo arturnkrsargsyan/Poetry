@@ -98,6 +98,7 @@ _i174.GetIt $initGetIt(
         getPoetryByCountUsecase: gh<_i375.GetPoetryByCountUsecase>(),
         fetchRandomPoemUsecase: gh<_i654.FetchRandomPoemUsecase>(),
         getRandomPoemSequenceUsecase: gh<_i87.GetRandomPoemSequenceUsecase>(),
+        getPoetryListByKeyword: gh<_i1042.GetPoetryListByKeyword>(),
       ));
   return getIt;
 }

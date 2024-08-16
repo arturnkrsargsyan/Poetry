@@ -19,8 +19,8 @@ mixin _$PoetryEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String keyword) fetchPoetryByKeyword,
-    required TResult Function(String title) fetchPoetryByTitle,
+    required TResult Function(String keyword, int count) fetchPoetryByKeyword,
+    required TResult Function(String title, int count) fetchPoetryByTitle,
     required TResult Function(String author) fetchPoetryByAuthor,
     required TResult Function(int count) fetchPoetryListWithCount,
     required TResult Function() fetchPoetryList,
@@ -32,8 +32,8 @@ mixin _$PoetryEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String keyword)? fetchPoetryByKeyword,
-    TResult? Function(String title)? fetchPoetryByTitle,
+    TResult? Function(String keyword, int count)? fetchPoetryByKeyword,
+    TResult? Function(String title, int count)? fetchPoetryByTitle,
     TResult? Function(String author)? fetchPoetryByAuthor,
     TResult? Function(int count)? fetchPoetryListWithCount,
     TResult? Function()? fetchPoetryList,
@@ -45,8 +45,8 @@ mixin _$PoetryEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String keyword)? fetchPoetryByKeyword,
-    TResult Function(String title)? fetchPoetryByTitle,
+    TResult Function(String keyword, int count)? fetchPoetryByKeyword,
+    TResult Function(String title, int count)? fetchPoetryByTitle,
     TResult Function(String author)? fetchPoetryByAuthor,
     TResult Function(int count)? fetchPoetryListWithCount,
     TResult Function()? fetchPoetryList,
@@ -159,8 +159,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String keyword) fetchPoetryByKeyword,
-    required TResult Function(String title) fetchPoetryByTitle,
+    required TResult Function(String keyword, int count) fetchPoetryByKeyword,
+    required TResult Function(String title, int count) fetchPoetryByTitle,
     required TResult Function(String author) fetchPoetryByAuthor,
     required TResult Function(int count) fetchPoetryListWithCount,
     required TResult Function() fetchPoetryList,
@@ -175,8 +175,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String keyword)? fetchPoetryByKeyword,
-    TResult? Function(String title)? fetchPoetryByTitle,
+    TResult? Function(String keyword, int count)? fetchPoetryByKeyword,
+    TResult? Function(String title, int count)? fetchPoetryByTitle,
     TResult? Function(String author)? fetchPoetryByAuthor,
     TResult? Function(int count)? fetchPoetryListWithCount,
     TResult? Function()? fetchPoetryList,
@@ -191,8 +191,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String keyword)? fetchPoetryByKeyword,
-    TResult Function(String title)? fetchPoetryByTitle,
+    TResult Function(String keyword, int count)? fetchPoetryByKeyword,
+    TResult Function(String title, int count)? fetchPoetryByTitle,
     TResult Function(String author)? fetchPoetryByAuthor,
     TResult Function(int count)? fetchPoetryListWithCount,
     TResult Function()? fetchPoetryList,
@@ -274,7 +274,7 @@ abstract class _$$FetchPoetryImplCopyWith<$Res> {
           _$FetchPoetryImpl value, $Res Function(_$FetchPoetryImpl) then) =
       __$$FetchPoetryImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String keyword});
+  $Res call({String keyword, int count});
 }
 
 /// @nodoc
@@ -289,12 +289,17 @@ class __$$FetchPoetryImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? keyword = null,
+    Object? count = null,
   }) {
     return _then(_$FetchPoetryImpl(
       null == keyword
           ? _value.keyword
           : keyword // ignore: cast_nullable_to_non_nullable
               as String,
+      null == count
+          ? _value.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -302,14 +307,16 @@ class __$$FetchPoetryImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FetchPoetryImpl implements _FetchPoetry {
-  const _$FetchPoetryImpl(this.keyword);
+  const _$FetchPoetryImpl(this.keyword, this.count);
 
   @override
   final String keyword;
+  @override
+  final int count;
 
   @override
   String toString() {
-    return 'PoetryEvent.fetchPoetryByKeyword(keyword: $keyword)';
+    return 'PoetryEvent.fetchPoetryByKeyword(keyword: $keyword, count: $count)';
   }
 
   @override
@@ -317,11 +324,12 @@ class _$FetchPoetryImpl implements _FetchPoetry {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FetchPoetryImpl &&
-            (identical(other.keyword, keyword) || other.keyword == keyword));
+            (identical(other.keyword, keyword) || other.keyword == keyword) &&
+            (identical(other.count, count) || other.count == count));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, keyword);
+  int get hashCode => Object.hash(runtimeType, keyword, count);
 
   @JsonKey(ignore: true)
   @override
@@ -333,8 +341,8 @@ class _$FetchPoetryImpl implements _FetchPoetry {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String keyword) fetchPoetryByKeyword,
-    required TResult Function(String title) fetchPoetryByTitle,
+    required TResult Function(String keyword, int count) fetchPoetryByKeyword,
+    required TResult Function(String title, int count) fetchPoetryByTitle,
     required TResult Function(String author) fetchPoetryByAuthor,
     required TResult Function(int count) fetchPoetryListWithCount,
     required TResult Function() fetchPoetryList,
@@ -342,15 +350,15 @@ class _$FetchPoetryImpl implements _FetchPoetry {
     required TResult Function() fetchRandomPoem,
     required TResult Function(PoetryModel poetry) savePoetry,
   }) {
-    return fetchPoetryByKeyword(keyword);
+    return fetchPoetryByKeyword(keyword, count);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String keyword)? fetchPoetryByKeyword,
-    TResult? Function(String title)? fetchPoetryByTitle,
+    TResult? Function(String keyword, int count)? fetchPoetryByKeyword,
+    TResult? Function(String title, int count)? fetchPoetryByTitle,
     TResult? Function(String author)? fetchPoetryByAuthor,
     TResult? Function(int count)? fetchPoetryListWithCount,
     TResult? Function()? fetchPoetryList,
@@ -358,15 +366,15 @@ class _$FetchPoetryImpl implements _FetchPoetry {
     TResult? Function()? fetchRandomPoem,
     TResult? Function(PoetryModel poetry)? savePoetry,
   }) {
-    return fetchPoetryByKeyword?.call(keyword);
+    return fetchPoetryByKeyword?.call(keyword, count);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String keyword)? fetchPoetryByKeyword,
-    TResult Function(String title)? fetchPoetryByTitle,
+    TResult Function(String keyword, int count)? fetchPoetryByKeyword,
+    TResult Function(String title, int count)? fetchPoetryByTitle,
     TResult Function(String author)? fetchPoetryByAuthor,
     TResult Function(int count)? fetchPoetryListWithCount,
     TResult Function()? fetchPoetryList,
@@ -376,7 +384,7 @@ class _$FetchPoetryImpl implements _FetchPoetry {
     required TResult orElse(),
   }) {
     if (fetchPoetryByKeyword != null) {
-      return fetchPoetryByKeyword(keyword);
+      return fetchPoetryByKeyword(keyword, count);
     }
     return orElse();
   }
@@ -439,9 +447,11 @@ class _$FetchPoetryImpl implements _FetchPoetry {
 }
 
 abstract class _FetchPoetry implements PoetryEvent {
-  const factory _FetchPoetry(final String keyword) = _$FetchPoetryImpl;
+  const factory _FetchPoetry(final String keyword, final int count) =
+      _$FetchPoetryImpl;
 
   String get keyword;
+  int get count;
   @JsonKey(ignore: true)
   _$$FetchPoetryImplCopyWith<_$FetchPoetryImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -453,7 +463,7 @@ abstract class _$$FetchPoetryByTitleImplCopyWith<$Res> {
           $Res Function(_$FetchPoetryByTitleImpl) then) =
       __$$FetchPoetryByTitleImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String title});
+  $Res call({String title, int count});
 }
 
 /// @nodoc
@@ -468,12 +478,17 @@ class __$$FetchPoetryByTitleImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? title = null,
+    Object? count = null,
   }) {
     return _then(_$FetchPoetryByTitleImpl(
       null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      null == count
+          ? _value.count
+          : count // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -481,14 +496,16 @@ class __$$FetchPoetryByTitleImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FetchPoetryByTitleImpl implements _FetchPoetryByTitle {
-  const _$FetchPoetryByTitleImpl(this.title);
+  const _$FetchPoetryByTitleImpl(this.title, this.count);
 
   @override
   final String title;
+  @override
+  final int count;
 
   @override
   String toString() {
-    return 'PoetryEvent.fetchPoetryByTitle(title: $title)';
+    return 'PoetryEvent.fetchPoetryByTitle(title: $title, count: $count)';
   }
 
   @override
@@ -496,11 +513,12 @@ class _$FetchPoetryByTitleImpl implements _FetchPoetryByTitle {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FetchPoetryByTitleImpl &&
-            (identical(other.title, title) || other.title == title));
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.count, count) || other.count == count));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, title);
+  int get hashCode => Object.hash(runtimeType, title, count);
 
   @JsonKey(ignore: true)
   @override
@@ -513,8 +531,8 @@ class _$FetchPoetryByTitleImpl implements _FetchPoetryByTitle {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String keyword) fetchPoetryByKeyword,
-    required TResult Function(String title) fetchPoetryByTitle,
+    required TResult Function(String keyword, int count) fetchPoetryByKeyword,
+    required TResult Function(String title, int count) fetchPoetryByTitle,
     required TResult Function(String author) fetchPoetryByAuthor,
     required TResult Function(int count) fetchPoetryListWithCount,
     required TResult Function() fetchPoetryList,
@@ -522,15 +540,15 @@ class _$FetchPoetryByTitleImpl implements _FetchPoetryByTitle {
     required TResult Function() fetchRandomPoem,
     required TResult Function(PoetryModel poetry) savePoetry,
   }) {
-    return fetchPoetryByTitle(title);
+    return fetchPoetryByTitle(title, count);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String keyword)? fetchPoetryByKeyword,
-    TResult? Function(String title)? fetchPoetryByTitle,
+    TResult? Function(String keyword, int count)? fetchPoetryByKeyword,
+    TResult? Function(String title, int count)? fetchPoetryByTitle,
     TResult? Function(String author)? fetchPoetryByAuthor,
     TResult? Function(int count)? fetchPoetryListWithCount,
     TResult? Function()? fetchPoetryList,
@@ -538,15 +556,15 @@ class _$FetchPoetryByTitleImpl implements _FetchPoetryByTitle {
     TResult? Function()? fetchRandomPoem,
     TResult? Function(PoetryModel poetry)? savePoetry,
   }) {
-    return fetchPoetryByTitle?.call(title);
+    return fetchPoetryByTitle?.call(title, count);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String keyword)? fetchPoetryByKeyword,
-    TResult Function(String title)? fetchPoetryByTitle,
+    TResult Function(String keyword, int count)? fetchPoetryByKeyword,
+    TResult Function(String title, int count)? fetchPoetryByTitle,
     TResult Function(String author)? fetchPoetryByAuthor,
     TResult Function(int count)? fetchPoetryListWithCount,
     TResult Function()? fetchPoetryList,
@@ -556,7 +574,7 @@ class _$FetchPoetryByTitleImpl implements _FetchPoetryByTitle {
     required TResult orElse(),
   }) {
     if (fetchPoetryByTitle != null) {
-      return fetchPoetryByTitle(title);
+      return fetchPoetryByTitle(title, count);
     }
     return orElse();
   }
@@ -619,10 +637,11 @@ class _$FetchPoetryByTitleImpl implements _FetchPoetryByTitle {
 }
 
 abstract class _FetchPoetryByTitle implements PoetryEvent {
-  const factory _FetchPoetryByTitle(final String title) =
+  const factory _FetchPoetryByTitle(final String title, final int count) =
       _$FetchPoetryByTitleImpl;
 
   String get title;
+  int get count;
   @JsonKey(ignore: true)
   _$$FetchPoetryByTitleImplCopyWith<_$FetchPoetryByTitleImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -694,8 +713,8 @@ class _$FetchPoetryByAuthorImpl implements _FetchPoetryByAuthor {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String keyword) fetchPoetryByKeyword,
-    required TResult Function(String title) fetchPoetryByTitle,
+    required TResult Function(String keyword, int count) fetchPoetryByKeyword,
+    required TResult Function(String title, int count) fetchPoetryByTitle,
     required TResult Function(String author) fetchPoetryByAuthor,
     required TResult Function(int count) fetchPoetryListWithCount,
     required TResult Function() fetchPoetryList,
@@ -710,8 +729,8 @@ class _$FetchPoetryByAuthorImpl implements _FetchPoetryByAuthor {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String keyword)? fetchPoetryByKeyword,
-    TResult? Function(String title)? fetchPoetryByTitle,
+    TResult? Function(String keyword, int count)? fetchPoetryByKeyword,
+    TResult? Function(String title, int count)? fetchPoetryByTitle,
     TResult? Function(String author)? fetchPoetryByAuthor,
     TResult? Function(int count)? fetchPoetryListWithCount,
     TResult? Function()? fetchPoetryList,
@@ -726,8 +745,8 @@ class _$FetchPoetryByAuthorImpl implements _FetchPoetryByAuthor {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String keyword)? fetchPoetryByKeyword,
-    TResult Function(String title)? fetchPoetryByTitle,
+    TResult Function(String keyword, int count)? fetchPoetryByKeyword,
+    TResult Function(String title, int count)? fetchPoetryByTitle,
     TResult Function(String author)? fetchPoetryByAuthor,
     TResult Function(int count)? fetchPoetryListWithCount,
     TResult Function()? fetchPoetryList,
@@ -877,8 +896,8 @@ class _$FetchPoetryListWithCountImpl implements _FetchPoetryListWithCount {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String keyword) fetchPoetryByKeyword,
-    required TResult Function(String title) fetchPoetryByTitle,
+    required TResult Function(String keyword, int count) fetchPoetryByKeyword,
+    required TResult Function(String title, int count) fetchPoetryByTitle,
     required TResult Function(String author) fetchPoetryByAuthor,
     required TResult Function(int count) fetchPoetryListWithCount,
     required TResult Function() fetchPoetryList,
@@ -893,8 +912,8 @@ class _$FetchPoetryListWithCountImpl implements _FetchPoetryListWithCount {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String keyword)? fetchPoetryByKeyword,
-    TResult? Function(String title)? fetchPoetryByTitle,
+    TResult? Function(String keyword, int count)? fetchPoetryByKeyword,
+    TResult? Function(String title, int count)? fetchPoetryByTitle,
     TResult? Function(String author)? fetchPoetryByAuthor,
     TResult? Function(int count)? fetchPoetryListWithCount,
     TResult? Function()? fetchPoetryList,
@@ -909,8 +928,8 @@ class _$FetchPoetryListWithCountImpl implements _FetchPoetryListWithCount {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String keyword)? fetchPoetryByKeyword,
-    TResult Function(String title)? fetchPoetryByTitle,
+    TResult Function(String keyword, int count)? fetchPoetryByKeyword,
+    TResult Function(String title, int count)? fetchPoetryByTitle,
     TResult Function(String author)? fetchPoetryByAuthor,
     TResult Function(int count)? fetchPoetryListWithCount,
     TResult Function()? fetchPoetryList,
@@ -1031,8 +1050,8 @@ class _$FetchPoetryListImpl implements _FetchPoetryList {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String keyword) fetchPoetryByKeyword,
-    required TResult Function(String title) fetchPoetryByTitle,
+    required TResult Function(String keyword, int count) fetchPoetryByKeyword,
+    required TResult Function(String title, int count) fetchPoetryByTitle,
     required TResult Function(String author) fetchPoetryByAuthor,
     required TResult Function(int count) fetchPoetryListWithCount,
     required TResult Function() fetchPoetryList,
@@ -1047,8 +1066,8 @@ class _$FetchPoetryListImpl implements _FetchPoetryList {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String keyword)? fetchPoetryByKeyword,
-    TResult? Function(String title)? fetchPoetryByTitle,
+    TResult? Function(String keyword, int count)? fetchPoetryByKeyword,
+    TResult? Function(String title, int count)? fetchPoetryByTitle,
     TResult? Function(String author)? fetchPoetryByAuthor,
     TResult? Function(int count)? fetchPoetryListWithCount,
     TResult? Function()? fetchPoetryList,
@@ -1063,8 +1082,8 @@ class _$FetchPoetryListImpl implements _FetchPoetryList {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String keyword)? fetchPoetryByKeyword,
-    TResult Function(String title)? fetchPoetryByTitle,
+    TResult Function(String keyword, int count)? fetchPoetryByKeyword,
+    TResult Function(String title, int count)? fetchPoetryByTitle,
     TResult Function(String author)? fetchPoetryByAuthor,
     TResult Function(int count)? fetchPoetryListWithCount,
     TResult Function()? fetchPoetryList,
@@ -1208,8 +1227,8 @@ class _$FetchRandomSequencePoemsImpl implements _FetchRandomSequencePoems {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String keyword) fetchPoetryByKeyword,
-    required TResult Function(String title) fetchPoetryByTitle,
+    required TResult Function(String keyword, int count) fetchPoetryByKeyword,
+    required TResult Function(String title, int count) fetchPoetryByTitle,
     required TResult Function(String author) fetchPoetryByAuthor,
     required TResult Function(int count) fetchPoetryListWithCount,
     required TResult Function() fetchPoetryList,
@@ -1224,8 +1243,8 @@ class _$FetchRandomSequencePoemsImpl implements _FetchRandomSequencePoems {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String keyword)? fetchPoetryByKeyword,
-    TResult? Function(String title)? fetchPoetryByTitle,
+    TResult? Function(String keyword, int count)? fetchPoetryByKeyword,
+    TResult? Function(String title, int count)? fetchPoetryByTitle,
     TResult? Function(String author)? fetchPoetryByAuthor,
     TResult? Function(int count)? fetchPoetryListWithCount,
     TResult? Function()? fetchPoetryList,
@@ -1240,8 +1259,8 @@ class _$FetchRandomSequencePoemsImpl implements _FetchRandomSequencePoems {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String keyword)? fetchPoetryByKeyword,
-    TResult Function(String title)? fetchPoetryByTitle,
+    TResult Function(String keyword, int count)? fetchPoetryByKeyword,
+    TResult Function(String title, int count)? fetchPoetryByTitle,
     TResult Function(String author)? fetchPoetryByAuthor,
     TResult Function(int count)? fetchPoetryListWithCount,
     TResult Function()? fetchPoetryList,
@@ -1362,8 +1381,8 @@ class _$FetchRandomPoemImpl implements _FetchRandomPoem {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String keyword) fetchPoetryByKeyword,
-    required TResult Function(String title) fetchPoetryByTitle,
+    required TResult Function(String keyword, int count) fetchPoetryByKeyword,
+    required TResult Function(String title, int count) fetchPoetryByTitle,
     required TResult Function(String author) fetchPoetryByAuthor,
     required TResult Function(int count) fetchPoetryListWithCount,
     required TResult Function() fetchPoetryList,
@@ -1378,8 +1397,8 @@ class _$FetchRandomPoemImpl implements _FetchRandomPoem {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String keyword)? fetchPoetryByKeyword,
-    TResult? Function(String title)? fetchPoetryByTitle,
+    TResult? Function(String keyword, int count)? fetchPoetryByKeyword,
+    TResult? Function(String title, int count)? fetchPoetryByTitle,
     TResult? Function(String author)? fetchPoetryByAuthor,
     TResult? Function(int count)? fetchPoetryListWithCount,
     TResult? Function()? fetchPoetryList,
@@ -1394,8 +1413,8 @@ class _$FetchRandomPoemImpl implements _FetchRandomPoem {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String keyword)? fetchPoetryByKeyword,
-    TResult Function(String title)? fetchPoetryByTitle,
+    TResult Function(String keyword, int count)? fetchPoetryByKeyword,
+    TResult Function(String title, int count)? fetchPoetryByTitle,
     TResult Function(String author)? fetchPoetryByAuthor,
     TResult Function(int count)? fetchPoetryListWithCount,
     TResult Function()? fetchPoetryList,
@@ -1536,8 +1555,8 @@ class _$SavePoetryImpl implements _SavePoetry {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String keyword) fetchPoetryByKeyword,
-    required TResult Function(String title) fetchPoetryByTitle,
+    required TResult Function(String keyword, int count) fetchPoetryByKeyword,
+    required TResult Function(String title, int count) fetchPoetryByTitle,
     required TResult Function(String author) fetchPoetryByAuthor,
     required TResult Function(int count) fetchPoetryListWithCount,
     required TResult Function() fetchPoetryList,
@@ -1552,8 +1571,8 @@ class _$SavePoetryImpl implements _SavePoetry {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String keyword)? fetchPoetryByKeyword,
-    TResult? Function(String title)? fetchPoetryByTitle,
+    TResult? Function(String keyword, int count)? fetchPoetryByKeyword,
+    TResult? Function(String title, int count)? fetchPoetryByTitle,
     TResult? Function(String author)? fetchPoetryByAuthor,
     TResult? Function(int count)? fetchPoetryListWithCount,
     TResult? Function()? fetchPoetryList,
@@ -1568,8 +1587,8 @@ class _$SavePoetryImpl implements _SavePoetry {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String keyword)? fetchPoetryByKeyword,
-    TResult Function(String title)? fetchPoetryByTitle,
+    TResult Function(String keyword, int count)? fetchPoetryByKeyword,
+    TResult Function(String title, int count)? fetchPoetryByTitle,
     TResult Function(String author)? fetchPoetryByAuthor,
     TResult Function(int count)? fetchPoetryListWithCount,
     TResult Function()? fetchPoetryList,

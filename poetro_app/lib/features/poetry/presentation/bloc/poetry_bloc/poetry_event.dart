@@ -3,8 +3,9 @@ part of 'poetry_bloc.dart';
 @freezed
 class PoetryEvent with _$PoetryEvent {
   const factory PoetryEvent.started() = _Started;
-  const factory PoetryEvent.fetchPoetryByKeyword(String keyword) = _FetchPoetry;
-  const factory PoetryEvent.fetchPoetryByTitle(String title) =
+  const factory PoetryEvent.fetchPoetryByKeyword(String keyword, int count) =
+      _FetchPoetry;
+  const factory PoetryEvent.fetchPoetryByTitle(String title, int count) =
       _FetchPoetryByTitle;
   const factory PoetryEvent.fetchPoetryByAuthor(String author) =
       _FetchPoetryByAuthor;

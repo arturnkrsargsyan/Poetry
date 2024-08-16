@@ -5,14 +5,27 @@ import 'package:poetro_app/features/poetry/domain/entities/poetry_entity.dart';
 import 'package:poetro_app/features/poetry/domain/repository/poetry_repository.dart';
 
 @singleton
-class GetPoetryListByKeyword implements Usecase<List<PoetryEntity>, String> {
+class GetPoetryListByKeyword
+    implements Usecase<List<PoetryEntity>, GetPoetryListByKeywordArg> {
   final IPoetryRepository _repository;
 
   GetPoetryListByKeyword({required IPoetryRepository repository})
       : _repository = repository;
 
   @override
-  Future<ApiResponse<List<PoetryEntity>>> call(String params) async {
-    return await _repository.getPoetryListByKeyword(params);
+  Future<ApiResponse<List<PoetryEntity>>> call(
+    GetPoetryListByKeywordArg arg,
+  ) async {
+    return await _repository.getPoetryListByKeyword(
+      arg.keyword,
+      arg.count,
+    );
   }
+}
+
+class GetPoetryListByKeywordArg {
+  final String keyword;
+  final int count;
+
+  GetPoetryListByKeywordArg({required this.keyword, required this.count});
 }

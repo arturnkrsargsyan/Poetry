@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:poetro_app/core/error/api_exception.dart';
 import 'package:poetro_app/core/network/api_endpoints.dart';
 import 'package:poetro_app/features/poetry/data/data_sources/remote/i_poetry_remote_data_source.dart';
 import 'package:poetro_app/features/poetry/data/dto/poetry_dto.dart';
@@ -41,10 +44,32 @@ class PoetryDataSource implements IPoetryRemoteDataSource {
   }
 
   @override
-  Future<List<PoetryDTO>> getPoetryListByKeyword(String keyword) async {
-    final response = await _dio.get(ApiEndpoints.poemByKeyword(keyword));
+  Future<List<PoetryDTO>> getPoetryListByKeyword(
+      String keyword, int count) async {
+    try {
+      final response = await _dio.get(
+        ApiEndpoints.poemByKeyword(
+          keyword,
+          count,
+        ),
+      );
 
-    return (response.data as List).map((e) => PoetryDTO.fromJson(e)).toList();
+      final list = response.data as List<dynamic>;
+
+      log(list.length.toString());
+
+      if (list.isEmpty) {
+        return [];
+      }
+
+      return list
+          .map(
+            (e) => PoetryDTO.fromJson(e as Map<String, dynamic>),
+          )
+          .toList();
+    } catch (e) {
+      throw ApiException(message: e.toString());
+    }
   }
 
   @override
