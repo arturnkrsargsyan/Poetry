@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:poetro_app/features/poetry/presentation/bloc/sav_poetry_bloc/saved_poems_bloc.dart';
@@ -31,11 +29,6 @@ class _SavedPoemsPageState extends State<SavedPoemsPage> {
         builder: (context, state) {
           return state.maybeMap(
             loaded: (value) {
-              // if (value.poems.isEmpty) {
-              //   return const Center(
-              //     child: Text('No saved poems yet'),
-              //   );
-              // }
               return ListView.builder(
                 itemCount: value.poems.length,
                 itemBuilder: (context, index) {
@@ -45,7 +38,6 @@ class _SavedPoemsPageState extends State<SavedPoemsPage> {
               );
             },
             loading: (value) {
-              log('Loading saved poems', name: 'SavedPoemsPage');
               return const Center(
                 child: CircularProgressIndicator(),
               );
