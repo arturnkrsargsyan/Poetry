@@ -15,7 +15,8 @@ class ListToStringConverted extends TypeConverter<List<String>, String> {
 
   @override
   List<String> fromSql(String fromDb) {
-    return jsonDecode(fromDb);
+    final decoded = jsonDecode(fromDb) as List<dynamic>;
+    return decoded.cast<String>();
   }
 
   @override

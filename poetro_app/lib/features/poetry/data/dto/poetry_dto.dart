@@ -5,7 +5,7 @@ import 'package:poetro_app/features/poetry/domain/entities/poetry_entity.dart';
 part 'poetry_dto.g.dart';
 
 @JsonSerializable()
-class PoetryDTO with EntityConvertible<PoetryDTO, PoetryEntity> {
+class PoetryDTO with EntityConvertible<PoetryEntity> {
   final String title;
   final String author;
   final List<String> lines;
@@ -15,7 +15,7 @@ class PoetryDTO with EntityConvertible<PoetryDTO, PoetryEntity> {
     required this.title,
     required this.author,
     required this.lines,
-    required this.linecount,
+    required this.linecount, // int.parse(json['linecount']),
   });
 
   factory PoetryDTO.fromJson(Map<String, dynamic> json) =>
@@ -30,4 +30,18 @@ class PoetryDTO with EntityConvertible<PoetryDTO, PoetryEntity> {
         lines: lines,
         linecount: linecount,
       );
+
+  factory PoetryDTO.fromEntity(PoetryEntity entity) {
+    return PoetryDTO(
+      title: entity.title,
+      author: entity.author,
+      lines: entity.lines,
+      linecount: entity.linecount,
+    );
+  }
+
+  @override
+  String toString() {
+    return 'PoetryDTO{title: $title, author: $author, lines: $lines, linecount: $linecount}';
+  }
 }

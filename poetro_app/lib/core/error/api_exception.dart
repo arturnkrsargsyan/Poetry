@@ -4,6 +4,8 @@ class ApiException implements Exception {
 
   ApiException({required this.message, this.code});
 
+  get errorMessage => 'ApiException: $message, code: $code';
+
   @override
   String toString() {
     return 'ApiException{message: $message, code: $code}';

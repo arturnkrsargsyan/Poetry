@@ -1,3 +1,3 @@
-mixin EntityConvertible<I, O> {
+mixin EntityConvertible<O> {
   O toEntity();
 }

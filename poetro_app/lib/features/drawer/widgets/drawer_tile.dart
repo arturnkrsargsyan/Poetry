@@ -11,16 +11,19 @@ class DrawerTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
 
-    return SizedBox(
-      height: height / 14,
-      child: DecoratedBox(
-        decoration: const BoxDecoration(color: AppColors.primaryColor),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
-          child: Row(
-            children: [
-              Text(name),
-            ],
+    return InkWell(
+      onTap: onTap,
+      child: SizedBox(
+        height: height / 14,
+        child: DecoratedBox(
+          decoration: const BoxDecoration(color: AppColors.primaryColor),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Row(
+              children: [
+                Text(name),
+              ],
+            ),
           ),
         ),
       ),

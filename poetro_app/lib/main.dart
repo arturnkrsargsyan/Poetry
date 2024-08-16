@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:poetro_app/config/app_global_providers.dart';
+import 'package:poetro_app/features/app/app_global_providers.dart';
 import 'package:poetro_app/config/di/injectable.dart';
 import 'package:poetro_app/config/routes/app_router.dart';
 

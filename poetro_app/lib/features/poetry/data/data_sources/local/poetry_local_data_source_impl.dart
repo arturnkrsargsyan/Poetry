@@ -1,9 +1,14 @@
+import 'dart:developer';
+
 import 'package:drift/drift.dart';
+import 'package:injectable/injectable.dart';
+import 'package:poetro_app/core/error/api_exception.dart';
 import 'package:poetro_app/core/local/database/drift_database.dart';
 import 'package:poetro_app/features/poetry/data/data_sources/local/i_porety_local_data_source.dart';
 import 'package:poetro_app/features/poetry/data/dto/poetry_dto.dart';
 import 'package:poetro_app/features/poetry/data/mappers/poetry_table_mapper.dart';
 
+@Singleton(as: IPoetryLocalDataSource)
 class PoetryLocalDataSource implements IPoetryLocalDataSource {
   final AppDriftDatabase _localDataSource;
 
@@ -60,10 +65,26 @@ class PoetryLocalDataSource implements IPoetryLocalDataSource {
 
   @override
   Future<List<PoetryDTO>> getPoetryList() async {
-    final query = _localDataSource.select(_localDataSource.poetryTable);
+    try {
+      final query = _localDataSource.select(_localDataSource.poetryTable);
 
-    final response = await query.get();
+      log("This Done1");
 
-    return response.map((e) => PoetryDTO.fromJson(e.toJson())).toList();
+      final response = await query.get();
+
+      log("This Done2");
+
+      return response
+          .map(
+            (tableData) => PoetryDTO.fromJson(
+              tableData.toJson(),
+            ),
+          )
+          .toList();
+    } catch (e) {
+      log(e.toString(), name: "PoetryLocalDataSource ERROR");
+
+      throw ApiException(message: e.toString());
+    }
   }
 }

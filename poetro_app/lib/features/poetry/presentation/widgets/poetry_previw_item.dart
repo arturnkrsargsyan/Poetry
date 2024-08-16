@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:poetro_app/config/routes/routes.dart';
 import 'package:poetro_app/core/const/app_colors.dart';
 import 'package:poetro_app/features/poetry/presentation/models/poetry_model.dart';
 
@@ -16,8 +17,8 @@ class PoetryPreviwItem extends StatelessWidget {
         title: Text(poetryDTO.title),
         subtitle: Text(poetryDTO.author),
         onTap: () {
-          context.go(
-            '/poetry',
+          context.push(
+            AppRoutes.poemDetails.fullPath,
             extra: poetryDTO,
           );
         },

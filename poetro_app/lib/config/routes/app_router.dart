@@ -1,45 +1,32 @@
-import 'dart:ui';
-
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
-import 'package:poetro_app/features/home/home_screen.dart';
+import 'package:poetro_app/config/routes/page_builders/slide_transition_page.dart';
+import 'package:poetro_app/config/routes/routes.dart';
+import 'package:poetro_app/features/home/home_page.dart';
 import 'package:poetro_app/features/poetry/presentation/models/poetry_model.dart';
-import 'package:poetro_app/features/poetry/presentation/pages/poetry_page.dart';
+import 'package:poetro_app/features/poetry/presentation/pages/poetry_details/widgets/poetry_page_builder.dart';
+import 'package:poetro_app/features/saved/saved_poems_page.dart';
 
 final appRouter = GoRouter(
   routes: [
     GoRoute(
-      path: '/',
+      path: AppRoutes.home.path,
       builder: (context, state) => const HomeScreen(),
       routes: [
         GoRoute(
-          path: 'poetry',
-          pageBuilder: (context, state) {
-            return CustomTransitionPage(
-              child: PoetryPage(
-                  poetry:
-                      state.extra != null ? state.extra as PoetryModel : null),
-              transitionsBuilder:
-                  (context, animation, secondaryAnimation, child) {
-                final offsetTween = Tween<Offset>(
-                  begin: const Offset(1.0, 0.0),
-                  end: Offset.zero,
-                );
-                const curve = Curves.easeInOut;
-                final curvedAnimation = CurvedAnimation(
-                  parent: animation,
-                  curve: curve,
-                );
-                final offsetAnimation = offsetTween.animate(curvedAnimation);
-                return SlideTransition(
-                  position: offsetAnimation,
-                  child: child,
-                );
-              },
-            );
-          },
+          path: AppRoutes.poemDetails.path,
+          pageBuilder: (_, state) => SlideTransitionPageBuilder(
+            child: PoetryPageBuilder(
+              poetry: state.extra as PoetryModel?,
+            ),
+          ),
         ),
       ],
+    ),
+    GoRoute(
+      path: AppRoutes.savedPoems.path,
+      pageBuilder: (_, __) => const SlideTransitionPageBuilder(
+        child: SavedPoemsPage(),
+      ),
     ),
   ],
 );

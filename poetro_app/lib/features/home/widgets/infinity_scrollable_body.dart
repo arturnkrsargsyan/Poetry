@@ -1,18 +1,20 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:poetro_app/features/poetry/presentation/bloc/poetry_bloc.dart';
+import 'package:poetro_app/features/poetry/presentation/bloc/poetry_bloc/poetry_bloc.dart';
 import 'package:poetro_app/features/poetry/presentation/models/poetry_model.dart';
 import 'package:poetro_app/features/poetry/presentation/widgets/poetry_previw_item.dart';
 
-class InfinityScrollableBody extends StatefulWidget {
-  const InfinityScrollableBody({super.key});
+class HomeScreenBody extends StatefulWidget {
+  const HomeScreenBody({super.key});
 
   @override
-  State<InfinityScrollableBody> createState() => _InfinityScrollableBodyState();
+  State<HomeScreenBody> createState() => _HomeBodyState();
 }
 
-class _InfinityScrollableBodyState extends State<InfinityScrollableBody> {
+class _HomeBodyState extends State<HomeScreenBody> {
   late final PagingController<int, PoetryModel> _pagingController;
 
   @override
@@ -26,7 +28,9 @@ class _InfinityScrollableBodyState extends State<InfinityScrollableBody> {
 
   Future<void> fetchData(int pageKey) async {
     context.read<PoetryBloc>().add(
-          PoetryEvent.fetchRandomSequencePoems(pageKey * 5), // MAX 3162
+          PoetryEvent.fetchRandomSequencePoems(
+            pageKey * 5,
+          ), // INFO MAX 3162, number bigger that this will always return 3162 items
         );
   }
 
@@ -45,6 +49,7 @@ class _InfinityScrollableBodyState extends State<InfinityScrollableBody> {
             _pagingController.appendPage(fetchedState.poetryList, 1);
           },
           failure: (value) {
+            log(value.message, name: 'HomeBody');
             _pagingController.error = value.message;
           },
         );

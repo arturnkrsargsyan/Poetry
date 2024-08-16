@@ -5,7 +5,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:poetro_app/features/poetry/domain/usecases/fetch_random_poem_usecase.dart';
 import 'package:poetro_app/features/poetry/domain/usecases/get_poetry_list_by_count_usecase.dart';
-import 'package:poetro_app/features/poetry/domain/usecases/get_poetry_usecase.dart';
 import 'package:poetro_app/features/poetry/domain/usecases/get_random_poem_sequence_usecase.dart';
 import 'package:poetro_app/features/poetry/presentation/models/poetry_model.dart';
 
@@ -22,18 +21,46 @@ class PoetryBloc extends Bloc<PoetryEvent, PoetryState> {
   final GetRandomPoemSequenceUsecase _getRandomPoemSequenceUsecase;
 
   PoetryBloc({
-    required GetPoetryUsecase getPoetryUsecase,
     required GetPoetryByCountUsecase getPoetryByCountUsecase,
-    required GetRandomPoemSequenceUsecase getRandomPoemSequenceUsecase,
     required FetchRandomPoemUsecase fetchRandomPoemUsecase,
+    required GetRandomPoemSequenceUsecase getRandomPoemSequenceUsecase,
   })  : _getPoetryByCountUsecase = getPoetryByCountUsecase,
-        _getRandomPoemSequenceUsecase = getRandomPoemSequenceUsecase,
         _fetchRandomPoemUsecase = fetchRandomPoemUsecase,
+        _getRandomPoemSequenceUsecase = getRandomPoemSequenceUsecase,
+        // _savePoetryUsecase = savePoetryUsecase,
+        // _getLocalPUsecase = GetSavedPoems,
         super(const _Initial()) {
     on<_FetchPoetryListWithCount>(_fetchPoetryListWithCount);
     on<_FetchRandomSequencePoems>(_fetchRandomSequencePoemList);
     on<_FetchRandomPoem>(_fetchRandomPoem);
+    // on<_SavePoetry>(_savePoetry);
   }
+
+  // Future<void> _savePoetry(
+  //   _SavePoetry event,
+  //   Emitter<PoetryState> emit,
+  // ) async {
+  //   emit(
+  //     const PoetryState.loading(),
+  //   );
+
+  //   final response = await _savePoetryUsecase(event.poetry.toEntity());
+
+  //   response.fold(
+  //     (l) {
+  //       log('Error saving poetry: ${l.message}');
+  //       emit(
+  //         PoetryState.failure(l.message),
+  //       );
+  //     },
+  //     (r) {
+  //       log('Poetry saved');
+  //       emit(
+  //         const PoetryState.saved(),
+  //       );
+  //     },
+  //   );
+  // }
 
   Future<void> _fetchRandomPoem(
     _FetchRandomPoem event,
@@ -72,6 +99,7 @@ class PoetryBloc extends Bloc<PoetryEvent, PoetryState> {
     emit(
       const PoetryState.loading(),
     );
+    // await _getLocalPUsecase();
 
     final response = await _getRandomPoemSequenceUsecase(event.count);
 

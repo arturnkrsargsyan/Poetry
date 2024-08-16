@@ -21,4 +21,13 @@ class PoetryModel {
       linesCount: entity.linecount,
     );
   }
+
+  PoetryEntity toEntity() {
+    return PoetryEntity(
+      title: title,
+      author: author,
+      lines: lines,
+      linecount: linesCount,
+    );
+  }
 }
