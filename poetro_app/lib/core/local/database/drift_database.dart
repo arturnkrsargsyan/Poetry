@@ -6,7 +6,7 @@ import 'package:poetro_app/features/poetry/data/data_sources/local/tables/poetry
 part 'drift_database.g.dart';
 
 @singleton
-@DriftDatabase(tables: [PoetryTable])
+@DriftDatabase(tables: <Type>[PoetryTable])
 class AppDriftDatabase extends _$AppDriftDatabase {
   AppDriftDatabase() : super(_openConnection());
 

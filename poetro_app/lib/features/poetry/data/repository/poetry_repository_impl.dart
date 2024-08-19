@@ -105,14 +105,16 @@ class PoetryRepositoryImpl implements IPoetryRepository {
   @override
   Future<ApiResponse<List<PoetryEntity>>> getPoetryListByKeyword(
     String keyword,
+    int count,
   ) async {
     try {
-      final response = await _remoteDataSource.getPoetryListByKeyword(keyword);
+      final List<PoetryDTO> response =
+          await _remoteDataSource.getPoetryListByKeyword(keyword, count);
 
       return right(
         response
             .map(
-              (e) => e.toEntity(),
+              (PoetryDTO e) => e.toEntity(),
             )
             .toList(),
       );

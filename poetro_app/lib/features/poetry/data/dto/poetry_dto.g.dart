@@ -9,7 +9,9 @@ part of 'poetry_dto.dart';
 PoetryDTO _$PoetryDTOFromJson(Map<String, dynamic> json) => PoetryDTO(
       title: json['title'] as String,
       author: json['author'] as String,
-      lines: (json['lines'] as List<dynamic>).map((e) => e.toString()).toList(),
+      lines: (json['lines'] as List<dynamic>)
+          .map((dynamic e) => e.toString())
+          .toList(),
       linecount: int.parse(json['linecount'].toString()),
     );
 

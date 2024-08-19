@@ -1,7 +1,6 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:poetro_app/features/poetry/domain/entities/poetry_entity.dart';
 import 'package:poetro_app/features/poetry/presentation/bloc/sav_poetry_bloc/saved_poems_bloc.dart';
 import 'package:poetro_app/features/poetry/presentation/widgets/poetry_previw_item.dart';
 
@@ -28,31 +27,31 @@ class _SavedPoemsPageState extends State<SavedPoemsPage> {
         title: const Text('Saved Poems'),
       ),
       body: BlocBuilder<SavedPoemsBloc, SavedPoemsState>(
-        builder: (context, state) {
+        builder: (_, SavedPoemsState state) {
           return state.maybeMap(
-            loaded: (value) {
-              // if (value.poems.isEmpty) {
-              //   return const Center(
-              //     child: Text('No saved poems yet'),
-              //   );
-              // }
+            loaded: (fetchedValue) {
+              if (fetchedValue.poems.isEmpty) {
+                return const Center(
+                  child: Text('No saved poems'),
+                );
+              }
+
               return ListView.builder(
-                itemCount: value.poems.length,
-                itemBuilder: (context, index) {
-                  final poem = value.poems[index];
-                  return PoetryPreviwItem(poetryDTO: poem);
+                itemCount: fetchedValue.poems.length,
+                itemBuilder: (_, int index) {
+                  final PoetryEntity poem = fetchedValue.poems[index];
+                  return PoetryPreviwItem(poetryEntity: poem);
                 },
               );
             },
-            loading: (value) {
-              log('Loading saved poems', name: 'SavedPoemsPage');
+            loading: (_) {
               return const Center(
                 child: CircularProgressIndicator(),
               );
             },
-            failure: (value) {
+            failure: (failureValue) {
               return Center(
-                child: Text(value.message),
+                child: Text(failureValue.message),
               );
             },
             orElse: () {

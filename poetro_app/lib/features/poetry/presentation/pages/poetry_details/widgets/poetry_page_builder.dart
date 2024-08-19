@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:poetro_app/features/poetry/presentation/bloc/poetry_bloc/poetry_bloc.dart';
-import 'package:poetro_app/features/poetry/presentation/models/poetry_model.dart';
+import 'package:poetro_app/features/poetry/domain/entities/poetry_entity.dart';
+import 'package:poetro_app/features/poetry/presentation/bloc/poem_fetch_bloc/poetry_fetch_bloc.dart';
 import 'package:poetro_app/features/poetry/presentation/pages/poetry_details/poetry_details_page.dart';
 
 class PoetryPageBuilder extends StatefulWidget {
-  final PoetryModel? poetry;
+  final PoetryEntity? poetry;
 
   const PoetryPageBuilder({super.key, required this.poetry});
 
@@ -14,13 +14,13 @@ class PoetryPageBuilder extends StatefulWidget {
 }
 
 class _PoetryPageState extends State<PoetryPageBuilder> {
-  PoetryModel? currentPoetry;
+  PoetryEntity? currentPoetry;
 
   @override
   void initState() {
     if (widget.poetry == null) {
-      context.read<PoetryBloc>().add(
-            const PoetryEvent.fetchRandomPoem(),
+      context.read<PoetryFetchBloc>().add(
+            const PoetryFetchEvent.fetchRandomPoem(),
           );
     } else {
       currentPoetry = widget.poetry;
@@ -31,17 +31,17 @@ class _PoetryPageState extends State<PoetryPageBuilder> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<PoetryBloc, PoetryState>(
-      listener: (context, state) {
-        state.mapOrNull(
-          fetched: (value) {
+    return BlocConsumer<PoetryFetchBloc, PoetryFetchState>(
+      listener: (_, poetryState) {
+        poetryState.mapOrNull(
+          fetched: (fetchedState) {
             setState(() {
-              currentPoetry = value.poetryList.first;
+              currentPoetry = fetchedState.poetryList.first;
             });
           },
         );
       },
-      builder: (context, state) {
+      builder: (_, state) {
         if (currentPoetry == null) {
           return const Scaffold(
             body: Center(

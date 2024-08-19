@@ -1,25 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:poetro_app/config/routes/routes.dart';
+import 'package:poetro_app/config/routes/app_routes.dart';
 import 'package:poetro_app/core/const/app_colors.dart';
-import 'package:poetro_app/features/poetry/presentation/models/poetry_model.dart';
+import 'package:poetro_app/features/poetry/domain/entities/poetry_entity.dart';
 
 class PoetryPreviwItem extends StatelessWidget {
-  final PoetryModel poetryDTO;
+  final PoetryEntity poetryEntity;
 
-  const PoetryPreviwItem({super.key, required this.poetryDTO});
+  const PoetryPreviwItem({
+    required this.poetryEntity,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Card(
       color: AppColors.primaryColor.withOpacity(0.2),
       child: ListTile(
-        title: Text(poetryDTO.title),
-        subtitle: Text(poetryDTO.author),
+        title: Text(poetryEntity.title),
+        subtitle: Text(poetryEntity.author),
         onTap: () {
           context.push(
             AppRoutes.poemDetails.fullPath,
-            extra: poetryDTO,
+            extra: PoetryEntity,
           );
         },
       ),

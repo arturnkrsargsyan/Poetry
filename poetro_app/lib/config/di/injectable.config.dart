@@ -29,12 +29,12 @@ import '../../features/poetry/domain/usecases/fetch_random_poem_usecase.dart'
     as _i654;
 import '../../features/poetry/domain/usecases/fetch_titles_usecase.dart'
     as _i42;
+import '../../features/poetry/domain/usecases/get_poems_by_keyword_usecase.dart'
+    as _i389;
 import '../../features/poetry/domain/usecases/get_poetry_list_by_author_usecase.dart'
     as _i344;
 import '../../features/poetry/domain/usecases/get_poetry_list_by_count_usecase.dart'
     as _i375;
-import '../../features/poetry/domain/usecases/get_poetry_list_by_keyword_usecase.dart'
-    as _i1042;
 import '../../features/poetry/domain/usecases/get_poetry_usecase.dart' as _i422;
 import '../../features/poetry/domain/usecases/get_random_poem_sequence_usecase.dart'
     as _i87;
@@ -42,8 +42,8 @@ import '../../features/poetry/domain/usecases/get_saved_poems_usecase.dart'
     as _i1;
 import '../../features/poetry/domain/usecases/save_poetry_usecase.dart'
     as _i367;
-import '../../features/poetry/presentation/bloc/poetry_bloc/poetry_bloc.dart'
-    as _i846;
+import '../../features/poetry/presentation/bloc/poem_fetch_bloc/poetry_fetch_bloc.dart'
+    as _i639;
 import '../../features/poetry/presentation/bloc/sav_poetry_bloc/saved_poems_bloc.dart'
     as _i643;
 import 'di_modules.dart' as _i176;
@@ -74,8 +74,6 @@ _i174.GetIt $initGetIt(
       () => _i422.GetPoetryUsecase(repository: gh<_i392.IPoetryRepository>()));
   gh.singleton<_i42.FetchTitlesUsecase>(
       () => _i42.FetchTitlesUsecase(repository: gh<_i392.IPoetryRepository>()));
-  gh.singleton<_i1042.GetPoetryListByKeyword>(() =>
-      _i1042.GetPoetryListByKeyword(repository: gh<_i392.IPoetryRepository>()));
   gh.singleton<_i344.GetPoetryListByAuthorUsecase>(() =>
       _i344.GetPoetryListByAuthorUsecase(
           repository: gh<_i392.IPoetryRepository>()));
@@ -85,6 +83,9 @@ _i174.GetIt $initGetIt(
       () => _i367.SavePoetryUsecase(repository: gh<_i392.IPoetryRepository>()));
   gh.singleton<_i1.GetSavedPoems>(
       () => _i1.GetSavedPoems(repository: gh<_i392.IPoetryRepository>()));
+  gh.singleton<_i389.FetchPoemsByKeywordUseCase>(() =>
+      _i389.FetchPoemsByKeywordUseCase(
+          repository: gh<_i392.IPoetryRepository>()));
   gh.singleton<_i643.SavedPoemsBloc>(() => _i643.SavedPoemsBloc(
         savePoetryUsecase: gh<_i367.SavePoetryUsecase>(),
         getSavedPoemsUsecase: gh<_i1.GetSavedPoems>(),
@@ -94,10 +95,11 @@ _i174.GetIt $initGetIt(
   gh.singleton<_i87.GetRandomPoemSequenceUsecase>(() =>
       _i87.GetRandomPoemSequenceUsecase(
           poetryRepository: gh<_i392.IPoetryRepository>()));
-  gh.singleton<_i846.PoetryBloc>(() => _i846.PoetryBloc(
+  gh.singleton<_i639.PoetryFetchBloc>(() => _i639.PoetryFetchBloc(
         getPoetryByCountUsecase: gh<_i375.GetPoetryByCountUsecase>(),
         fetchRandomPoemUsecase: gh<_i654.FetchRandomPoemUsecase>(),
         getRandomPoemSequenceUsecase: gh<_i87.GetRandomPoemSequenceUsecase>(),
+        getPoetryListByKeyword: gh<_i389.FetchPoemsByKeywordUseCase>(),
       ));
   return getIt;
 }

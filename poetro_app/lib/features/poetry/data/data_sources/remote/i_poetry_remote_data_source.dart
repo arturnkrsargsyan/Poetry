@@ -9,7 +9,7 @@ abstract interface class IPoetryRemoteDataSource {
 
   Future<List<PoetryDTO>> getPoetriyListByCount(int count);
 
-  Future<List<PoetryDTO>> getPoetryListByKeyword(String keyword);
+  Future<List<PoetryDTO>> getPoetryListByKeyword(String keyword, int count);
 
   Future<List<PoetryDTO>> getRandomSequencePoems(int count);
 
