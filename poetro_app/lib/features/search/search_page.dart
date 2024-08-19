@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:poetro_app/features/poetry/presentation/bloc/poetry_bloc/poetry_bloc.dart';
+import 'package:poetro_app/features/poetry/presentation/bloc/poem_fetch_bloc/poetry_fetch_bloc.dart';
 import 'package:poetro_app/features/search/widgets/poetry_list_view.dart';
 
 class SearchPage extends StatefulWidget {
@@ -33,8 +33,8 @@ class _SearchPageState extends State<SearchPage> {
                 title = value;
               });
 
-              context.read<PoetryBloc>().add(
-                    PoetryEvent.fetchPoetryByTitle(value, 12),
+              context.read<PoetryFetchBloc>().add(
+                    PoetryFetchEvent.fetchPoetryByTitle(value, 12),
                   );
             },
           ),

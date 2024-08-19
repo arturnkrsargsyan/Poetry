@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
-class SlideTransitionPageBuilder extends CustomTransitionPage {
+class SlideTransitionPageBuilder<T> extends CustomTransitionPage<T> {
   const SlideTransitionPageBuilder({required super.child})
       : super(
           transitionsBuilder: _buildSlideTransition,

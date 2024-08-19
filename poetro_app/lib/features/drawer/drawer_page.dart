@@ -15,7 +15,7 @@ class HomePageDrawer extends StatelessWidget {
     return Drawer(
       backgroundColor: AppColors.primaryColor,
       child: ListView(
-        children: [
+        children: <Widget>[
           const AppDrawerHeader(),
           const Divider(
             color: AppColors.highlightColor,

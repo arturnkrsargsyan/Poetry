@@ -15,30 +15,33 @@ class PoetryDataSource implements IPoetryRemoteDataSource {
 
   @override
   Future<List<PoetryDTO>> getPoetriyListByCount(int count) async {
-    final response = await _dio.get(ApiEndpoints.poemByPoemCount(count));
+    final Response<dynamic> response =
+        await _dio.get(ApiEndpoints.poemByPoemCount(count));
 
-    final listOfJson = response.data as List;
+    final List<Map<String, dynamic>> listOfJson =
+        response.data as List<Map<String, dynamic>>;
 
-    return listOfJson.map((e) => PoetryDTO.fromJson(e)).toList();
+    return listOfJson.map(PoetryDTO.fromJson).toList();
   }
 
   @override
   Future<PoetryDTO> getPoetryDetail(String title) async {
-    final response = await _dio.get(ApiEndpoints.poem(title));
+    final Response<dynamic> response = await _dio.get(ApiEndpoints.poem(title));
 
     return PoetryDTO.fromJson(response.data);
   }
 
   @override
   Future<List<String>> getPoetryList() async {
-    final response = await _dio.get(ApiEndpoints.allPoems);
+    final Response<dynamic> response = await _dio.get(ApiEndpoints.allPoems);
 
     return response.data['titles']!;
   }
 
   @override
   Future<List<PoetryDTO>> getPoetryListByAuthor(String author) async {
-    final response = await _dio.get(ApiEndpoints.authorPoems(author));
+    final Response<dynamic> response =
+        await _dio.get(ApiEndpoints.authorPoems(author));
 
     return response.data['titles']!;
   }
@@ -47,14 +50,15 @@ class PoetryDataSource implements IPoetryRemoteDataSource {
   Future<List<PoetryDTO>> getPoetryListByKeyword(
       String keyword, int count) async {
     try {
-      final response = await _dio.get(
+      final Response<dynamic> response = await _dio.get(
         ApiEndpoints.poemByKeyword(
           keyword,
           count,
         ),
       );
 
-      final list = response.data as List<dynamic>;
+      final List<Map<String, Map<String, dynamic>>> list =
+          response.data as List<Map<String, Map<String, dynamic>>>;
 
       log(list.length.toString());
 
@@ -74,16 +78,19 @@ class PoetryDataSource implements IPoetryRemoteDataSource {
 
   @override
   Future<List<PoetryDTO>> getRandomSequencePoems(int count) async {
-    final response = await _dio.get(
+    final Response<dynamic> response = await _dio.get(
       ApiEndpoints.randomSequence(count),
     );
 
-    return (response.data as List).map((e) => PoetryDTO.fromJson(e)).toList();
+    final List<Map<String, Map<String, dynamic>>> list =
+        response.data as List<Map<String, Map<String, dynamic>>>;
+
+    return list.map(PoetryDTO.fromJson).toList();
   }
 
   @override
   Future<PoetryDTO> getRandomPoem() async {
-    final response = await getRandomSequencePoems(1);
+    final List<PoetryDTO> response = await getRandomSequencePoems(1);
 
     return response[0];
   }

@@ -42,6 +42,10 @@ class PoetryDTO with EntityConvertible<PoetryEntity> {
 
   @override
   String toString() {
-    return 'PoetryDTO{title: $title, author: $author, lines: $lines, linecount: $linecount}';
+    return '''
+PoetryDTO{title: $title, 
+    author: $author,
+     lines: $lines,
+      linecount: $linecount}''';
   }
 }

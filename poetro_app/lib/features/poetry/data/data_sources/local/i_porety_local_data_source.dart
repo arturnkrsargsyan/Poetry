@@ -5,9 +5,9 @@ abstract interface class IPoetryLocalDataSource {
 
   Future<List<PoetryDTO>> getPoetryList();
 
-  Future<void> savePoetry(PoetryDTO PoetryEntity);
+  Future<void> savePoetry(PoetryDTO poetryEntity);
 
-  Future<void> udpatePoetry(PoetryDTO PoetryEntity);
+  Future<void> udpatePoetry(PoetryDTO poetryEntity);
 
   Future<void> deletePoetry(String name);
 }

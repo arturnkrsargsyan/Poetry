@@ -6,49 +6,48 @@ import 'package:injectable/injectable.dart';
 import 'package:poetro_app/core/error/api_exception.dart';
 import 'package:poetro_app/features/poetry/domain/entities/poetry_entity.dart';
 import 'package:poetro_app/features/poetry/domain/usecases/fetch_random_poem_usecase.dart';
+import 'package:poetro_app/features/poetry/domain/usecases/get_poems_by_keyword_usecase.dart';
 import 'package:poetro_app/features/poetry/domain/usecases/get_poetry_list_by_count_usecase.dart';
-import 'package:poetro_app/features/poetry/domain/usecases/get_poetry_list_by_keyword_usecase.dart';
 import 'package:poetro_app/features/poetry/domain/usecases/get_random_poem_sequence_usecase.dart';
 
-part 'poetry_event.dart';
-part 'poetry_state.dart';
-part 'poetry_bloc.freezed.dart';
+part 'poetry_fetch_event.dart';
+part 'poetry_fetch_state.dart';
+part 'poetry_fetch_bloc.freezed.dart';
 
 @singleton
-class PoetryBloc extends Bloc<PoetryEvent, PoetryState> {
+class PoetryFetchBloc extends Bloc<PoetryFetchEvent, PoetryFetchState> {
   final GetPoetryByCountUsecase _getPoetryByCountUsecase;
 
   final FetchRandomPoemUsecase _fetchRandomPoemUsecase;
 
   final GetRandomPoemSequenceUsecase _getRandomPoemSequenceUsecase;
 
-  final GetPoetryListByKeyword _getPoetryListByKeyword;
+  final FetchPoemsByKeywordUseCase _getPoetryListByKeyword;
 
-  PoetryBloc({
+  PoetryFetchBloc({
     required GetPoetryByCountUsecase getPoetryByCountUsecase,
     required FetchRandomPoemUsecase fetchRandomPoemUsecase,
     required GetRandomPoemSequenceUsecase getRandomPoemSequenceUsecase,
-    required GetPoetryListByKeyword getPoetryListByKeyword,
+    required FetchPoemsByKeywordUseCase getPoetryListByKeyword,
   })  : _getPoetryByCountUsecase = getPoetryByCountUsecase,
         _fetchRandomPoemUsecase = fetchRandomPoemUsecase,
         _getRandomPoemSequenceUsecase = getRandomPoemSequenceUsecase,
         _getPoetryListByKeyword = getPoetryListByKeyword,
         super(const _Initial()) {
-    on<_FetchPoetryListWithCount>(_fetchPoetryListWithCount);
+    on<_FetchPoetryByCount>(_fetchPoetryListWithCount);
     on<_FetchRandomSequencePoems>(_fetchRandomSequencePoemList);
     on<_FetchRandomPoem>(_fetchRandomPoem);
     on<_FetchPoetryByTitle>(_fetchPoetryByTitle);
   }
-
   Future<void> _fetchPoetryByTitle(
     _FetchPoetryByTitle event,
-    Emitter<PoetryState> emit,
+    Emitter<PoetryFetchState> emit,
   ) async {
     emit(
-      const PoetryState.loading(),
+      const PoetryFetchState.loading(),
     );
     final response = await _getPoetryListByKeyword(
-      GetPoetryListByKeywordArg(
+      FetchPoemsByKeywordUseCaseArg(
         keyword: event.title,
         count: event.count,
       ),
@@ -57,14 +56,14 @@ class PoetryBloc extends Bloc<PoetryEvent, PoetryState> {
     response.fold(
       (ApiException apiException) {
         emit(
-          PoetryState.failure(
+          PoetryFetchState.failure(
             apiException.message,
           ),
         );
       },
       (poetryList) {
         emit(
-          PoetryState.fetched(poetryList),
+          PoetryFetchState.fetched(poetryList),
         );
       },
     );
@@ -72,29 +71,23 @@ class PoetryBloc extends Bloc<PoetryEvent, PoetryState> {
 
   Future<void> _fetchRandomPoem(
     _FetchRandomPoem event,
-    Emitter<PoetryState> emit,
+    Emitter<PoetryFetchState> emit,
   ) async {
-    emit(
-      const PoetryState.loading(),
-    );
+    emit(const PoetryFetchState.loading());
 
     log('Fetching random poem');
 
     final response = await _fetchRandomPoemUsecase();
 
     response.fold(
-      (l) {
+      (ApiException exception) {
         emit(
-          PoetryState.failure(l.message),
+          PoetryFetchState.failure(exception.message),
         );
       },
       (r) {
         emit(
-          PoetryState.fetched(
-            [
-              r,
-            ],
-          ),
+          PoetryFetchState.singleFetch(r),
         );
       },
     );
@@ -102,48 +95,43 @@ class PoetryBloc extends Bloc<PoetryEvent, PoetryState> {
 
   Future<void> _fetchRandomSequencePoemList(
     _FetchRandomSequencePoems event,
-    Emitter<PoetryState> emit,
+    Emitter<PoetryFetchState> emit,
   ) async {
-    emit(
-      const PoetryState.loading(),
-    );
-    // await _getLocalPUsecase();
+    emit(const PoetryFetchState.loading());
 
     final response = await _getRandomPoemSequenceUsecase(event.count);
 
     response.fold(
-      (l) {
+      (ApiException failure) {
         emit(
-          PoetryState.failure(l.message),
+          PoetryFetchState.failure(failure.message),
         );
       },
-      (List<PoetryEntity> r) {
+      (List<PoetryEntity> fetcehdList) {
         emit(
-          PoetryState.fetched(r),
+          PoetryFetchState.fetched(fetcehdList),
         );
       },
     );
   }
 
   Future<void> _fetchPoetryListWithCount(
-    _FetchPoetryListWithCount event,
-    Emitter<PoetryState> emit,
+    _FetchPoetryByCount event,
+    Emitter<PoetryFetchState> emit,
   ) async {
-    emit(const PoetryState.loading());
+    emit(const PoetryFetchState.loading());
 
     final result = await _getPoetryByCountUsecase(event.count);
 
     result.fold(
-      (apiException) {
+      (ApiException apiException) {
         emit(
-          PoetryState.failure(
-            apiException.message,
-          ),
+          PoetryFetchState.failure(apiException.message),
         );
       },
       (List<PoetryEntity> poetryList) {
         emit(
-          PoetryState.fetched(poetryList),
+          PoetryFetchState.fetched(poetryList),
         );
       },
     );

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:poetro_app/features/poetry/domain/entities/poetry_entity.dart';
-import 'package:poetro_app/features/poetry/presentation/bloc/poetry_bloc/poetry_bloc.dart';
+import 'package:poetro_app/features/poetry/presentation/bloc/poem_fetch_bloc/poetry_fetch_bloc.dart';
 import 'package:poetro_app/features/poetry/presentation/widgets/poetry_previw_item.dart';
 
 class PoetryListView extends StatefulWidget {
@@ -30,11 +30,11 @@ class _PoetryListViewState extends State<PoetryListView> {
     log("Value: ${widget.value}", name: 'PoetryListView');
 
     widget.value.isEmpty
-        ? context.read<PoetryBloc>().add(
-              const PoetryEvent.fetchRandomSequencePoems(2),
+        ? context.read<PoetryFetchBloc>().add(
+              const PoetryFetchEvent.fetchRandomSequencePoems(2),
             )
-        : context.read<PoetryBloc>().add(
-              PoetryEvent.fetchPoetryByTitle(widget.value, 2),
+        : context.read<PoetryFetchBloc>().add(
+              PoetryFetchEvent.fetchPoetryByTitle(widget.value, 2),
             );
   }
 
@@ -55,7 +55,7 @@ class _PoetryListViewState extends State<PoetryListView> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<PoetryBloc, PoetryState>(
+    return BlocListener<PoetryFetchBloc, PoetryFetchState>(
       listener: (_, state) {
         state.mapOrNull(
           fetched: (fetchedState) {

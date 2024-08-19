@@ -15,7 +15,8 @@ final GoRouter appRouter = GoRouter(
       routes: <GoRoute>[
         GoRoute(
           path: AppRoutes.poemDetails.path,
-          pageBuilder: (_, GoRouterState state) => SlideTransitionPageBuilder(
+          pageBuilder: (_, GoRouterState state) =>
+              SlideTransitionPageBuilder<String>(
             child: PoetryPageBuilder(
               poetry: state.extra as PoetryEntity?,
             ),
@@ -25,13 +26,13 @@ final GoRouter appRouter = GoRouter(
     ),
     GoRoute(
       path: AppRoutes.savedPoems.path,
-      pageBuilder: (_, __) => const SlideTransitionPageBuilder(
+      pageBuilder: (_, __) => const SlideTransitionPageBuilder<String>(
         child: SavedPoemsPage(),
       ),
     ),
     GoRoute(
       path: AppRoutes.search.path,
-      pageBuilder: (_, __) => const SlideTransitionPageBuilder(
+      pageBuilder: (_, __) => const SlideTransitionPageBuilder<String>(
         child: SearchPage(),
       ),
     ),

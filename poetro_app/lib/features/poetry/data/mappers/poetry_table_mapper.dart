@@ -14,10 +14,10 @@ extension PoetryTableMapper on PoetryTableData {
 
   static PoetryTableCompanion toCompanion({required PoetryDTO poetry}) {
     return PoetryTableCompanion(
-      title: Value(poetry.title),
-      author: Value(poetry.author),
-      lines: Value(poetry.lines),
-      linecount: Value(poetry.linecount),
+      title: Value<String>(poetry.title),
+      author: Value<String>(poetry.author),
+      lines: Value<List<String>>(poetry.lines),
+      linecount: Value<int>(poetry.linecount),
     );
   }
 }

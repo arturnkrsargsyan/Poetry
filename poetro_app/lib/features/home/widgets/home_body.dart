@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:poetro_app/features/poetry/domain/entities/poetry_entity.dart';
-import 'package:poetro_app/features/poetry/presentation/bloc/poetry_bloc/poetry_bloc.dart';
+import 'package:poetro_app/features/poetry/presentation/bloc/poem_fetch_bloc/poetry_fetch_bloc.dart';
 import 'package:poetro_app/features/poetry/presentation/widgets/poetry_previw_item.dart';
 
 class HomeScreenBody extends StatefulWidget {
@@ -19,15 +19,15 @@ class _HomeBodyState extends State<HomeScreenBody> {
 
   @override
   void initState() {
-    _pagingController = PagingController(firstPageKey: 2);
+    _pagingController = PagingController<int, PoetryEntity>(firstPageKey: 2);
     _pagingController.addPageRequestListener(fetchData);
     super.initState();
   }
 
   Future<void> fetchData(int pageKey) async {
     log('$pageKey', name: 'HomeBody');
-    context.read<PoetryBloc>().add(
-          PoetryEvent.fetchRandomSequencePoems(
+    context.read<PoetryFetchBloc>().add(
+          PoetryFetchEvent.fetchRandomSequencePoems(
             pageKey * 5,
           ), // INFO MAX 3162,
           // number bigger that this will always return 3162 items
@@ -42,18 +42,18 @@ class _HomeBodyState extends State<HomeScreenBody> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<PoetryBloc, PoetryState>(
-      listener: (context, state) {
-        state.mapOrNull(
+    return BlocListener<PoetryFetchBloc, PoetryFetchState>(
+      listener: (_, poetryFetchState) {
+        poetryFetchState.mapOrNull(
           fetched: (fetchedState) {
             _pagingController.appendPage(fetchedState.poetryList, 1);
           },
-          failure: (value) {
-            _pagingController.error = value.message;
+          failure: (failureState) {
+            _pagingController.error = failureState.message;
           },
         );
       },
-      child: PagedListView(
+      child: PagedListView<int, PoetryEntity>(
         pagingController: _pagingController,
         builderDelegate: PagedChildBuilderDelegate<PoetryEntity>(
           itemBuilder: (_, PoetryEntity item, __) {

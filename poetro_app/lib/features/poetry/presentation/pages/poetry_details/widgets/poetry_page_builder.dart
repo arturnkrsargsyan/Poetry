@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:poetro_app/features/poetry/domain/entities/poetry_entity.dart';
-import 'package:poetro_app/features/poetry/presentation/bloc/poetry_bloc/poetry_bloc.dart';
+import 'package:poetro_app/features/poetry/presentation/bloc/poem_fetch_bloc/poetry_fetch_bloc.dart';
 import 'package:poetro_app/features/poetry/presentation/pages/poetry_details/poetry_details_page.dart';
 
 class PoetryPageBuilder extends StatefulWidget {
@@ -19,8 +19,8 @@ class _PoetryPageState extends State<PoetryPageBuilder> {
   @override
   void initState() {
     if (widget.poetry == null) {
-      context.read<PoetryBloc>().add(
-            const PoetryEvent.fetchRandomPoem(),
+      context.read<PoetryFetchBloc>().add(
+            const PoetryFetchEvent.fetchRandomPoem(),
           );
     } else {
       currentPoetry = widget.poetry;
@@ -31,7 +31,7 @@ class _PoetryPageState extends State<PoetryPageBuilder> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<PoetryBloc, PoetryState>(
+    return BlocConsumer<PoetryFetchBloc, PoetryFetchState>(
       listener: (_, poetryState) {
         poetryState.mapOrNull(
           fetched: (fetchedState) {
