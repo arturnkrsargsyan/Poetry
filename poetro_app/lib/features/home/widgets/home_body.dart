@@ -3,8 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:poetro_app/features/poetry/domain/entities/poetry_entity.dart';
 import 'package:poetro_app/features/poetry/presentation/bloc/poetry_bloc/poetry_bloc.dart';
-import 'package:poetro_app/features/poetry/presentation/models/poetry_model.dart';
 import 'package:poetro_app/features/poetry/presentation/widgets/poetry_previw_item.dart';
 
 class HomeScreenBody extends StatefulWidget {
@@ -15,7 +15,7 @@ class HomeScreenBody extends StatefulWidget {
 }
 
 class _HomeBodyState extends State<HomeScreenBody> {
-  late final PagingController<int, PoetryModel> _pagingController;
+  late final PagingController<int, PoetryEntity> _pagingController;
 
   @override
   void initState() {
@@ -55,9 +55,9 @@ class _HomeBodyState extends State<HomeScreenBody> {
       },
       child: PagedListView(
         pagingController: _pagingController,
-        builderDelegate: PagedChildBuilderDelegate<PoetryModel>(
-          itemBuilder: (context, item, index) {
-            return PoetryPreviwItem(poetryModel: item);
+        builderDelegate: PagedChildBuilderDelegate<PoetryEntity>(
+          itemBuilder: (_, PoetryEntity item, __) {
+            return PoetryPreviwItem(poetryEntity: item);
           },
         ),
       ),

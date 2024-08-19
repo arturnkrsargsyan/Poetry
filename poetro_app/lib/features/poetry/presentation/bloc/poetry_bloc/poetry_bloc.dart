@@ -4,11 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:poetro_app/core/error/api_exception.dart';
+import 'package:poetro_app/features/poetry/domain/entities/poetry_entity.dart';
 import 'package:poetro_app/features/poetry/domain/usecases/fetch_random_poem_usecase.dart';
 import 'package:poetro_app/features/poetry/domain/usecases/get_poetry_list_by_count_usecase.dart';
 import 'package:poetro_app/features/poetry/domain/usecases/get_poetry_list_by_keyword_usecase.dart';
 import 'package:poetro_app/features/poetry/domain/usecases/get_random_poem_sequence_usecase.dart';
-import 'package:poetro_app/features/poetry/presentation/models/poetry_model.dart';
 
 part 'poetry_event.dart';
 part 'poetry_state.dart';
@@ -64,13 +64,7 @@ class PoetryBloc extends Bloc<PoetryEvent, PoetryState> {
       },
       (poetryList) {
         emit(
-          PoetryState.fetched(
-            poetryList
-                .map(
-                  PoetryModel.fromEntity,
-                )
-                .toList(),
-          ),
+          PoetryState.fetched(poetryList),
         );
       },
     );
@@ -98,7 +92,7 @@ class PoetryBloc extends Bloc<PoetryEvent, PoetryState> {
         emit(
           PoetryState.fetched(
             [
-              PoetryModel.fromEntity(r),
+              r,
             ],
           ),
         );
@@ -123,11 +117,9 @@ class PoetryBloc extends Bloc<PoetryEvent, PoetryState> {
           PoetryState.failure(l.message),
         );
       },
-      (r) {
+      (List<PoetryEntity> r) {
         emit(
-          PoetryState.fetched(
-            r.map((e) => PoetryModel.fromEntity(e)).toList(),
-          ),
+          PoetryState.fetched(r),
         );
       },
     );
@@ -149,15 +141,9 @@ class PoetryBloc extends Bloc<PoetryEvent, PoetryState> {
           ),
         );
       },
-      (poetryList) {
+      (List<PoetryEntity> poetryList) {
         emit(
-          PoetryState.fetched(
-            poetryList
-                .map(
-                  (e) => PoetryModel.fromEntity(e),
-                )
-                .toList(),
-          ),
+          PoetryState.fetched(poetryList),
         );
       },
     );

@@ -22,8 +22,8 @@ mixin _$SavedPoemsEvent {
     required TResult Function(String title) deletePoem,
     required TResult Function() deleteAllPoems,
     required TResult Function() loadPoems,
-    required TResult Function(PoetryModel poetry) savePoem,
-    required TResult Function(PoetryModel poetry) updatePoem,
+    required TResult Function(PoetryEntity poetry) savePoem,
+    required TResult Function(PoetryEntity poetry) updatePoem,
     required TResult Function(String title) searchPoem,
   }) =>
       throw _privateConstructorUsedError;
@@ -33,8 +33,8 @@ mixin _$SavedPoemsEvent {
     TResult? Function(String title)? deletePoem,
     TResult? Function()? deleteAllPoems,
     TResult? Function()? loadPoems,
-    TResult? Function(PoetryModel poetry)? savePoem,
-    TResult? Function(PoetryModel poetry)? updatePoem,
+    TResult? Function(PoetryEntity poetry)? savePoem,
+    TResult? Function(PoetryEntity poetry)? updatePoem,
     TResult? Function(String title)? searchPoem,
   }) =>
       throw _privateConstructorUsedError;
@@ -44,8 +44,8 @@ mixin _$SavedPoemsEvent {
     TResult Function(String title)? deletePoem,
     TResult Function()? deleteAllPoems,
     TResult Function()? loadPoems,
-    TResult Function(PoetryModel poetry)? savePoem,
-    TResult Function(PoetryModel poetry)? updatePoem,
+    TResult Function(PoetryEntity poetry)? savePoem,
+    TResult Function(PoetryEntity poetry)? updatePoem,
     TResult Function(String title)? searchPoem,
     required TResult orElse(),
   }) =>
@@ -146,8 +146,8 @@ class _$StartedImpl implements _Started {
     required TResult Function(String title) deletePoem,
     required TResult Function() deleteAllPoems,
     required TResult Function() loadPoems,
-    required TResult Function(PoetryModel poetry) savePoem,
-    required TResult Function(PoetryModel poetry) updatePoem,
+    required TResult Function(PoetryEntity poetry) savePoem,
+    required TResult Function(PoetryEntity poetry) updatePoem,
     required TResult Function(String title) searchPoem,
   }) {
     return started();
@@ -160,8 +160,8 @@ class _$StartedImpl implements _Started {
     TResult? Function(String title)? deletePoem,
     TResult? Function()? deleteAllPoems,
     TResult? Function()? loadPoems,
-    TResult? Function(PoetryModel poetry)? savePoem,
-    TResult? Function(PoetryModel poetry)? updatePoem,
+    TResult? Function(PoetryEntity poetry)? savePoem,
+    TResult? Function(PoetryEntity poetry)? updatePoem,
     TResult? Function(String title)? searchPoem,
   }) {
     return started?.call();
@@ -174,8 +174,8 @@ class _$StartedImpl implements _Started {
     TResult Function(String title)? deletePoem,
     TResult Function()? deleteAllPoems,
     TResult Function()? loadPoems,
-    TResult Function(PoetryModel poetry)? savePoem,
-    TResult Function(PoetryModel poetry)? updatePoem,
+    TResult Function(PoetryEntity poetry)? savePoem,
+    TResult Function(PoetryEntity poetry)? updatePoem,
     TResult Function(String title)? searchPoem,
     required TResult orElse(),
   }) {
@@ -304,8 +304,8 @@ class _$DeletePoemImpl implements _DeletePoem {
     required TResult Function(String title) deletePoem,
     required TResult Function() deleteAllPoems,
     required TResult Function() loadPoems,
-    required TResult Function(PoetryModel poetry) savePoem,
-    required TResult Function(PoetryModel poetry) updatePoem,
+    required TResult Function(PoetryEntity poetry) savePoem,
+    required TResult Function(PoetryEntity poetry) updatePoem,
     required TResult Function(String title) searchPoem,
   }) {
     return deletePoem(title);
@@ -318,8 +318,8 @@ class _$DeletePoemImpl implements _DeletePoem {
     TResult? Function(String title)? deletePoem,
     TResult? Function()? deleteAllPoems,
     TResult? Function()? loadPoems,
-    TResult? Function(PoetryModel poetry)? savePoem,
-    TResult? Function(PoetryModel poetry)? updatePoem,
+    TResult? Function(PoetryEntity poetry)? savePoem,
+    TResult? Function(PoetryEntity poetry)? updatePoem,
     TResult? Function(String title)? searchPoem,
   }) {
     return deletePoem?.call(title);
@@ -332,8 +332,8 @@ class _$DeletePoemImpl implements _DeletePoem {
     TResult Function(String title)? deletePoem,
     TResult Function()? deleteAllPoems,
     TResult Function()? loadPoems,
-    TResult Function(PoetryModel poetry)? savePoem,
-    TResult Function(PoetryModel poetry)? updatePoem,
+    TResult Function(PoetryEntity poetry)? savePoem,
+    TResult Function(PoetryEntity poetry)? updatePoem,
     TResult Function(String title)? searchPoem,
     required TResult orElse(),
   }) {
@@ -441,8 +441,8 @@ class _$DeleteAllPoemsImpl implements _DeleteAllPoems {
     required TResult Function(String title) deletePoem,
     required TResult Function() deleteAllPoems,
     required TResult Function() loadPoems,
-    required TResult Function(PoetryModel poetry) savePoem,
-    required TResult Function(PoetryModel poetry) updatePoem,
+    required TResult Function(PoetryEntity poetry) savePoem,
+    required TResult Function(PoetryEntity poetry) updatePoem,
     required TResult Function(String title) searchPoem,
   }) {
     return deleteAllPoems();
@@ -455,8 +455,8 @@ class _$DeleteAllPoemsImpl implements _DeleteAllPoems {
     TResult? Function(String title)? deletePoem,
     TResult? Function()? deleteAllPoems,
     TResult? Function()? loadPoems,
-    TResult? Function(PoetryModel poetry)? savePoem,
-    TResult? Function(PoetryModel poetry)? updatePoem,
+    TResult? Function(PoetryEntity poetry)? savePoem,
+    TResult? Function(PoetryEntity poetry)? updatePoem,
     TResult? Function(String title)? searchPoem,
   }) {
     return deleteAllPoems?.call();
@@ -469,8 +469,8 @@ class _$DeleteAllPoemsImpl implements _DeleteAllPoems {
     TResult Function(String title)? deletePoem,
     TResult Function()? deleteAllPoems,
     TResult Function()? loadPoems,
-    TResult Function(PoetryModel poetry)? savePoem,
-    TResult Function(PoetryModel poetry)? updatePoem,
+    TResult Function(PoetryEntity poetry)? savePoem,
+    TResult Function(PoetryEntity poetry)? updatePoem,
     TResult Function(String title)? searchPoem,
     required TResult orElse(),
   }) {
@@ -573,8 +573,8 @@ class _$LoadPoemsImpl implements _LoadPoems {
     required TResult Function(String title) deletePoem,
     required TResult Function() deleteAllPoems,
     required TResult Function() loadPoems,
-    required TResult Function(PoetryModel poetry) savePoem,
-    required TResult Function(PoetryModel poetry) updatePoem,
+    required TResult Function(PoetryEntity poetry) savePoem,
+    required TResult Function(PoetryEntity poetry) updatePoem,
     required TResult Function(String title) searchPoem,
   }) {
     return loadPoems();
@@ -587,8 +587,8 @@ class _$LoadPoemsImpl implements _LoadPoems {
     TResult? Function(String title)? deletePoem,
     TResult? Function()? deleteAllPoems,
     TResult? Function()? loadPoems,
-    TResult? Function(PoetryModel poetry)? savePoem,
-    TResult? Function(PoetryModel poetry)? updatePoem,
+    TResult? Function(PoetryEntity poetry)? savePoem,
+    TResult? Function(PoetryEntity poetry)? updatePoem,
     TResult? Function(String title)? searchPoem,
   }) {
     return loadPoems?.call();
@@ -601,8 +601,8 @@ class _$LoadPoemsImpl implements _LoadPoems {
     TResult Function(String title)? deletePoem,
     TResult Function()? deleteAllPoems,
     TResult Function()? loadPoems,
-    TResult Function(PoetryModel poetry)? savePoem,
-    TResult Function(PoetryModel poetry)? updatePoem,
+    TResult Function(PoetryEntity poetry)? savePoem,
+    TResult Function(PoetryEntity poetry)? updatePoem,
     TResult Function(String title)? searchPoem,
     required TResult orElse(),
   }) {
@@ -669,7 +669,7 @@ abstract class _$$SavePoemImplCopyWith<$Res> {
           _$SavePoemImpl value, $Res Function(_$SavePoemImpl) then) =
       __$$SavePoemImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({PoetryModel poetry});
+  $Res call({PoetryEntity poetry});
 }
 
 /// @nodoc
@@ -689,7 +689,7 @@ class __$$SavePoemImplCopyWithImpl<$Res>
       null == poetry
           ? _value.poetry
           : poetry // ignore: cast_nullable_to_non_nullable
-              as PoetryModel,
+              as PoetryEntity,
     ));
   }
 }
@@ -700,7 +700,7 @@ class _$SavePoemImpl implements _SavePoem {
   const _$SavePoemImpl(this.poetry);
 
   @override
-  final PoetryModel poetry;
+  final PoetryEntity poetry;
 
   @override
   String toString() {
@@ -731,8 +731,8 @@ class _$SavePoemImpl implements _SavePoem {
     required TResult Function(String title) deletePoem,
     required TResult Function() deleteAllPoems,
     required TResult Function() loadPoems,
-    required TResult Function(PoetryModel poetry) savePoem,
-    required TResult Function(PoetryModel poetry) updatePoem,
+    required TResult Function(PoetryEntity poetry) savePoem,
+    required TResult Function(PoetryEntity poetry) updatePoem,
     required TResult Function(String title) searchPoem,
   }) {
     return savePoem(poetry);
@@ -745,8 +745,8 @@ class _$SavePoemImpl implements _SavePoem {
     TResult? Function(String title)? deletePoem,
     TResult? Function()? deleteAllPoems,
     TResult? Function()? loadPoems,
-    TResult? Function(PoetryModel poetry)? savePoem,
-    TResult? Function(PoetryModel poetry)? updatePoem,
+    TResult? Function(PoetryEntity poetry)? savePoem,
+    TResult? Function(PoetryEntity poetry)? updatePoem,
     TResult? Function(String title)? searchPoem,
   }) {
     return savePoem?.call(poetry);
@@ -759,8 +759,8 @@ class _$SavePoemImpl implements _SavePoem {
     TResult Function(String title)? deletePoem,
     TResult Function()? deleteAllPoems,
     TResult Function()? loadPoems,
-    TResult Function(PoetryModel poetry)? savePoem,
-    TResult Function(PoetryModel poetry)? updatePoem,
+    TResult Function(PoetryEntity poetry)? savePoem,
+    TResult Function(PoetryEntity poetry)? updatePoem,
     TResult Function(String title)? searchPoem,
     required TResult orElse(),
   }) {
@@ -818,9 +818,9 @@ class _$SavePoemImpl implements _SavePoem {
 }
 
 abstract class _SavePoem implements SavedPoemsEvent {
-  const factory _SavePoem(final PoetryModel poetry) = _$SavePoemImpl;
+  const factory _SavePoem(final PoetryEntity poetry) = _$SavePoemImpl;
 
-  PoetryModel get poetry;
+  PoetryEntity get poetry;
   @JsonKey(ignore: true)
   _$$SavePoemImplCopyWith<_$SavePoemImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -832,7 +832,7 @@ abstract class _$$UpdatePoemImplCopyWith<$Res> {
           _$UpdatePoemImpl value, $Res Function(_$UpdatePoemImpl) then) =
       __$$UpdatePoemImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({PoetryModel poetry});
+  $Res call({PoetryEntity poetry});
 }
 
 /// @nodoc
@@ -852,7 +852,7 @@ class __$$UpdatePoemImplCopyWithImpl<$Res>
       null == poetry
           ? _value.poetry
           : poetry // ignore: cast_nullable_to_non_nullable
-              as PoetryModel,
+              as PoetryEntity,
     ));
   }
 }
@@ -863,7 +863,7 @@ class _$UpdatePoemImpl implements _UpdatePoem {
   const _$UpdatePoemImpl(this.poetry);
 
   @override
-  final PoetryModel poetry;
+  final PoetryEntity poetry;
 
   @override
   String toString() {
@@ -894,8 +894,8 @@ class _$UpdatePoemImpl implements _UpdatePoem {
     required TResult Function(String title) deletePoem,
     required TResult Function() deleteAllPoems,
     required TResult Function() loadPoems,
-    required TResult Function(PoetryModel poetry) savePoem,
-    required TResult Function(PoetryModel poetry) updatePoem,
+    required TResult Function(PoetryEntity poetry) savePoem,
+    required TResult Function(PoetryEntity poetry) updatePoem,
     required TResult Function(String title) searchPoem,
   }) {
     return updatePoem(poetry);
@@ -908,8 +908,8 @@ class _$UpdatePoemImpl implements _UpdatePoem {
     TResult? Function(String title)? deletePoem,
     TResult? Function()? deleteAllPoems,
     TResult? Function()? loadPoems,
-    TResult? Function(PoetryModel poetry)? savePoem,
-    TResult? Function(PoetryModel poetry)? updatePoem,
+    TResult? Function(PoetryEntity poetry)? savePoem,
+    TResult? Function(PoetryEntity poetry)? updatePoem,
     TResult? Function(String title)? searchPoem,
   }) {
     return updatePoem?.call(poetry);
@@ -922,8 +922,8 @@ class _$UpdatePoemImpl implements _UpdatePoem {
     TResult Function(String title)? deletePoem,
     TResult Function()? deleteAllPoems,
     TResult Function()? loadPoems,
-    TResult Function(PoetryModel poetry)? savePoem,
-    TResult Function(PoetryModel poetry)? updatePoem,
+    TResult Function(PoetryEntity poetry)? savePoem,
+    TResult Function(PoetryEntity poetry)? updatePoem,
     TResult Function(String title)? searchPoem,
     required TResult orElse(),
   }) {
@@ -981,9 +981,9 @@ class _$UpdatePoemImpl implements _UpdatePoem {
 }
 
 abstract class _UpdatePoem implements SavedPoemsEvent {
-  const factory _UpdatePoem(final PoetryModel poetry) = _$UpdatePoemImpl;
+  const factory _UpdatePoem(final PoetryEntity poetry) = _$UpdatePoemImpl;
 
-  PoetryModel get poetry;
+  PoetryEntity get poetry;
   @JsonKey(ignore: true)
   _$$UpdatePoemImplCopyWith<_$UpdatePoemImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1057,8 +1057,8 @@ class _$SearchPoemImpl implements _SearchPoem {
     required TResult Function(String title) deletePoem,
     required TResult Function() deleteAllPoems,
     required TResult Function() loadPoems,
-    required TResult Function(PoetryModel poetry) savePoem,
-    required TResult Function(PoetryModel poetry) updatePoem,
+    required TResult Function(PoetryEntity poetry) savePoem,
+    required TResult Function(PoetryEntity poetry) updatePoem,
     required TResult Function(String title) searchPoem,
   }) {
     return searchPoem(title);
@@ -1071,8 +1071,8 @@ class _$SearchPoemImpl implements _SearchPoem {
     TResult? Function(String title)? deletePoem,
     TResult? Function()? deleteAllPoems,
     TResult? Function()? loadPoems,
-    TResult? Function(PoetryModel poetry)? savePoem,
-    TResult? Function(PoetryModel poetry)? updatePoem,
+    TResult? Function(PoetryEntity poetry)? savePoem,
+    TResult? Function(PoetryEntity poetry)? updatePoem,
     TResult? Function(String title)? searchPoem,
   }) {
     return searchPoem?.call(title);
@@ -1085,8 +1085,8 @@ class _$SearchPoemImpl implements _SearchPoem {
     TResult Function(String title)? deletePoem,
     TResult Function()? deleteAllPoems,
     TResult Function()? loadPoems,
-    TResult Function(PoetryModel poetry)? savePoem,
-    TResult Function(PoetryModel poetry)? updatePoem,
+    TResult Function(PoetryEntity poetry)? savePoem,
+    TResult Function(PoetryEntity poetry)? updatePoem,
     TResult Function(String title)? searchPoem,
     required TResult orElse(),
   }) {
@@ -1158,7 +1158,7 @@ mixin _$SavedPoemsState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PoetryModel> poems) loaded,
+    required TResult Function(List<PoetryEntity> poems) loaded,
     required TResult Function(String message) failure,
     required TResult Function() success,
   }) =>
@@ -1167,7 +1167,7 @@ mixin _$SavedPoemsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PoetryModel> poems)? loaded,
+    TResult? Function(List<PoetryEntity> poems)? loaded,
     TResult? Function(String message)? failure,
     TResult? Function()? success,
   }) =>
@@ -1176,7 +1176,7 @@ mixin _$SavedPoemsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PoetryModel> poems)? loaded,
+    TResult Function(List<PoetryEntity> poems)? loaded,
     TResult Function(String message)? failure,
     TResult Function()? success,
     required TResult orElse(),
@@ -1270,7 +1270,7 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PoetryModel> poems) loaded,
+    required TResult Function(List<PoetryEntity> poems) loaded,
     required TResult Function(String message) failure,
     required TResult Function() success,
   }) {
@@ -1282,7 +1282,7 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PoetryModel> poems)? loaded,
+    TResult? Function(List<PoetryEntity> poems)? loaded,
     TResult? Function(String message)? failure,
     TResult? Function()? success,
   }) {
@@ -1294,7 +1294,7 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PoetryModel> poems)? loaded,
+    TResult Function(List<PoetryEntity> poems)? loaded,
     TResult Function(String message)? failure,
     TResult Function()? success,
     required TResult orElse(),
@@ -1390,7 +1390,7 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PoetryModel> poems) loaded,
+    required TResult Function(List<PoetryEntity> poems) loaded,
     required TResult Function(String message) failure,
     required TResult Function() success,
   }) {
@@ -1402,7 +1402,7 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PoetryModel> poems)? loaded,
+    TResult? Function(List<PoetryEntity> poems)? loaded,
     TResult? Function(String message)? failure,
     TResult? Function()? success,
   }) {
@@ -1414,7 +1414,7 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PoetryModel> poems)? loaded,
+    TResult Function(List<PoetryEntity> poems)? loaded,
     TResult Function(String message)? failure,
     TResult Function()? success,
     required TResult orElse(),
@@ -1476,7 +1476,7 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<PoetryModel> poems});
+  $Res call({List<PoetryEntity> poems});
 }
 
 /// @nodoc
@@ -1496,7 +1496,7 @@ class __$$LoadedImplCopyWithImpl<$Res>
       null == poems
           ? _value._poems
           : poems // ignore: cast_nullable_to_non_nullable
-              as List<PoetryModel>,
+              as List<PoetryEntity>,
     ));
   }
 }
@@ -1504,11 +1504,11 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl(final List<PoetryModel> poems) : _poems = poems;
+  const _$LoadedImpl(final List<PoetryEntity> poems) : _poems = poems;
 
-  final List<PoetryModel> _poems;
+  final List<PoetryEntity> _poems;
   @override
-  List<PoetryModel> get poems {
+  List<PoetryEntity> get poems {
     if (_poems is EqualUnmodifiableListView) return _poems;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_poems);
@@ -1542,7 +1542,7 @@ class _$LoadedImpl implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PoetryModel> poems) loaded,
+    required TResult Function(List<PoetryEntity> poems) loaded,
     required TResult Function(String message) failure,
     required TResult Function() success,
   }) {
@@ -1554,7 +1554,7 @@ class _$LoadedImpl implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PoetryModel> poems)? loaded,
+    TResult? Function(List<PoetryEntity> poems)? loaded,
     TResult? Function(String message)? failure,
     TResult? Function()? success,
   }) {
@@ -1566,7 +1566,7 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PoetryModel> poems)? loaded,
+    TResult Function(List<PoetryEntity> poems)? loaded,
     TResult Function(String message)? failure,
     TResult Function()? success,
     required TResult orElse(),
@@ -1619,9 +1619,9 @@ class _$LoadedImpl implements _Loaded {
 }
 
 abstract class _Loaded implements SavedPoemsState {
-  const factory _Loaded(final List<PoetryModel> poems) = _$LoadedImpl;
+  const factory _Loaded(final List<PoetryEntity> poems) = _$LoadedImpl;
 
-  List<PoetryModel> get poems;
+  List<PoetryEntity> get poems;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1693,7 +1693,7 @@ class _$FailureImpl implements _Failure {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PoetryModel> poems) loaded,
+    required TResult Function(List<PoetryEntity> poems) loaded,
     required TResult Function(String message) failure,
     required TResult Function() success,
   }) {
@@ -1705,7 +1705,7 @@ class _$FailureImpl implements _Failure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PoetryModel> poems)? loaded,
+    TResult? Function(List<PoetryEntity> poems)? loaded,
     TResult? Function(String message)? failure,
     TResult? Function()? success,
   }) {
@@ -1717,7 +1717,7 @@ class _$FailureImpl implements _Failure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PoetryModel> poems)? loaded,
+    TResult Function(List<PoetryEntity> poems)? loaded,
     TResult Function(String message)? failure,
     TResult Function()? success,
     required TResult orElse(),
@@ -1818,7 +1818,7 @@ class _$SuccessImpl implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<PoetryModel> poems) loaded,
+    required TResult Function(List<PoetryEntity> poems) loaded,
     required TResult Function(String message) failure,
     required TResult Function() success,
   }) {
@@ -1830,7 +1830,7 @@ class _$SuccessImpl implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<PoetryModel> poems)? loaded,
+    TResult? Function(List<PoetryEntity> poems)? loaded,
     TResult? Function(String message)? failure,
     TResult? Function()? success,
   }) {
@@ -1842,7 +1842,7 @@ class _$SuccessImpl implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<PoetryModel> poems)? loaded,
+    TResult Function(List<PoetryEntity> poems)? loaded,
     TResult Function(String message)? failure,
     TResult Function()? success,
     required TResult orElse(),

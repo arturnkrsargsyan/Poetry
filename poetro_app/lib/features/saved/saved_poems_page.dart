@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:poetro_app/features/poetry/domain/entities/poetry_entity.dart';
 import 'package:poetro_app/features/poetry/presentation/bloc/sav_poetry_bloc/saved_poems_bloc.dart';
-import 'package:poetro_app/features/poetry/presentation/models/poetry_model.dart';
 import 'package:poetro_app/features/poetry/presentation/widgets/poetry_previw_item.dart';
 
 class SavedPoemsPage extends StatefulWidget {
@@ -39,8 +39,8 @@ class _SavedPoemsPageState extends State<SavedPoemsPage> {
               return ListView.builder(
                 itemCount: fetchedValue.poems.length,
                 itemBuilder: (_, int index) {
-                  final PoetryModel poem = fetchedValue.poems[index];
-                  return PoetryPreviwItem(poetryModel: poem);
+                  final PoetryEntity poem = fetchedValue.poems[index];
+                  return PoetryPreviwItem(poetryEntity: poem);
                 },
               );
             },

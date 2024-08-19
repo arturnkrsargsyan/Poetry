@@ -1,9 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:poetro_app/core/error/api_exception.dart';
+import 'package:poetro_app/features/poetry/domain/entities/poetry_entity.dart';
 import 'package:poetro_app/features/poetry/domain/usecases/get_saved_poems_usecase.dart';
 import 'package:poetro_app/features/poetry/domain/usecases/save_poetry_usecase.dart';
-import 'package:poetro_app/features/poetry/presentation/models/poetry_model.dart';
 
 part 'saved_poems_event.dart';
 part 'saved_poems_state.dart';
@@ -36,13 +37,7 @@ class SavedPoemsBloc extends Bloc<SavedPoemsEvent, SavedPoemsState> {
       },
       (poems) {
         emit(
-          SavedPoemsState.loaded(
-            poems
-                .map(
-                  (e) => PoetryModel.fromEntity(e),
-                )
-                .toList(),
-          ),
+          SavedPoemsState.loaded(poems),
         );
       },
     );
@@ -52,10 +47,10 @@ class SavedPoemsBloc extends Bloc<SavedPoemsEvent, SavedPoemsState> {
     _SavePoem event,
     Emitter<SavedPoemsState> emit,
   ) async {
-    final response = await _savePoetryUsecase(event.poetry.toEntity());
+    final response = await _savePoetryUsecase(event.poetry);
 
     response.fold(
-      (exception) {
+      (ApiException exception) {
         emit(SavedPoemsState.failure(exception.message));
       },
       (_) {

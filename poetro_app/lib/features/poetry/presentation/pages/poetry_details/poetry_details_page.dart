@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:poetro_app/features/poetry/domain/entities/poetry_entity.dart';
 import 'package:poetro_app/features/poetry/presentation/bloc/poetry_bloc/poetry_bloc.dart';
-import 'package:poetro_app/features/poetry/presentation/models/poetry_model.dart';
 import 'package:poetro_app/features/poetry/presentation/pages/poetry_details/widgets/poem_line_item.dart';
 
 class PoetryPage extends StatelessWidget {
-  final PoetryModel poetry;
+  final PoetryEntity poetry;
 
   const PoetryPage({super.key, required this.poetry});
 
@@ -36,8 +36,8 @@ class PoetryPage extends StatelessWidget {
               ),
               Expanded(
                 child: ListView.builder(
-                  itemCount: poetry.linesCount,
-                  itemBuilder: (context, index) {
+                  itemCount: poetry.linecount,
+                  itemBuilder: (_, int index) {
                     return PoemLineItem(
                       line: poetry.lines[index],
                     );

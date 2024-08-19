@@ -3,8 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:poetro_app/features/poetry/domain/entities/poetry_entity.dart';
 import 'package:poetro_app/features/poetry/presentation/bloc/poetry_bloc/poetry_bloc.dart';
-import 'package:poetro_app/features/poetry/presentation/models/poetry_model.dart';
 import 'package:poetro_app/features/poetry/presentation/widgets/poetry_previw_item.dart';
 
 class PoetryListView extends StatefulWidget {
@@ -16,7 +16,7 @@ class PoetryListView extends StatefulWidget {
 }
 
 class _PoetryListViewState extends State<PoetryListView> {
-  late PagingController<int, PoetryModel> pagingController;
+  late PagingController<int, PoetryEntity> pagingController;
 
   @override
   void initState() {
@@ -31,7 +31,7 @@ class _PoetryListViewState extends State<PoetryListView> {
 
     widget.value.isEmpty
         ? context.read<PoetryBloc>().add(
-              PoetryEvent.fetchRandomSequencePoems(2),
+              const PoetryEvent.fetchRandomSequencePoems(2),
             )
         : context.read<PoetryBloc>().add(
               PoetryEvent.fetchPoetryByTitle(widget.value, 2),
@@ -56,10 +56,10 @@ class _PoetryListViewState extends State<PoetryListView> {
   @override
   Widget build(BuildContext context) {
     return BlocListener<PoetryBloc, PoetryState>(
-      listener: (context, state) {
+      listener: (_, state) {
         state.mapOrNull(
           fetched: (fetchedState) {
-            final isLastPage =
+            final bool isLastPage =
                 fetchedState.poetryList.length < 12; // Assume 10 items per page
             if (isLastPage) {
               pagingController.appendLastPage(fetchedState.poetryList);
@@ -75,11 +75,11 @@ class _PoetryListViewState extends State<PoetryListView> {
           },
         );
       },
-      child: PagedListView<int, PoetryModel>(
+      child: PagedListView<int, PoetryEntity>(
         pagingController: pagingController,
-        builderDelegate: PagedChildBuilderDelegate<PoetryModel>(
+        builderDelegate: PagedChildBuilderDelegate<PoetryEntity>(
           itemBuilder: (_, item, __) {
-            return PoetryPreviwItem(poetryModel: item);
+            return PoetryPreviwItem(poetryEntity: item);
           },
         ),
       ),

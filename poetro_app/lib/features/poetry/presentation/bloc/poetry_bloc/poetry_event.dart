@@ -17,5 +17,5 @@ class PoetryEvent with _$PoetryEvent {
       _FetchRandomSequencePoems;
   const factory PoetryEvent.fetchRandomPoem() = _FetchRandomPoem;
 
-  const factory PoetryEvent.savePoetry(PoetryModel poetry) = _SavePoetry;
+  const factory PoetryEvent.savePoetry(PoetryEntity poetry) = _SavePoetry;
 }
